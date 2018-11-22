@@ -234,6 +234,16 @@ void insereNaFuncaoDelta (delta_t **d, int ei, char c, int ef)
     
     return;
 }
+
+int finalDoVetor (char s[SBUFF])
+{
+    int i = 0;
+
+    while(s[i] != '\0')
+        i++;
+
+    return i;
+}
 /* ---------------------------------------------------------------------- */
 /**
  * @ingroup GroupUnique
