@@ -87,3 +87,4 @@ void imprimeQuintupla (quint_t q);
 void imprimeListaDeEstadosFinais (quint_t q);
 
 void imprimeFuncaoDelta (quint_t q);
+void criaEstadoInicial (quint_t *q);

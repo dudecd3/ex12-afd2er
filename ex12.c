@@ -323,6 +323,14 @@ void imprimeFuncaoDelta (quint_t q)
     }
     return;
 }
+
+void criaEstadoInicial (quint_t *q)
+{
+    insereNaFuncaoDelta(q->k, 'E', q->s0);
+    q->s0 = q->k;
+
+    return;
+}
 /* ---------------------------------------------------------------------- */
 /**
  * @ingroup GroupUnique
