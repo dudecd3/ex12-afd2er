@@ -308,6 +308,18 @@ void imprimeListaDeEstadosFinais (quint_t q)
     }
     return;
 }
+
+void imprimeFuncaoDelta (quint_t)
+{
+    delta_t *cont = q.d;
+
+    while(cont != NULL)
+    {
+        printf("(%d, %s, %d)\n", cont->ei, cont->s, cont->ef);
+        cont = cont->prox;
+    }
+    return;
+}
 /* ---------------------------------------------------------------------- */
 /**
  * @ingroup GroupUnique
