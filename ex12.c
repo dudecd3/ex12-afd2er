@@ -144,6 +144,7 @@ int main(int argc, char *argv[])
       printf("Erro ao abrir arquivo\n");
       exit(0);
   }
+  pegaEntrada(&q, arq);
 
   ex12_init(); /* initialization function */
 
@@ -212,7 +213,7 @@ void pegaEntrada (quint_t *q, FILE *arq)
     i = 0;
     while(pf[i] != '\0')
     {
-        insereNosEstadosFinais(&q->p, pf[i]);
+        insereNosEstadosFinais(&q->f, pf[i]);
         i++;
     }
 
@@ -271,7 +272,7 @@ void insereNosEstadosFinais (ef_t **p, int f)
     if(ant != NULL)
         ant->prox = cont;
     else
-        *d = cont;
+        *p = cont;
 
     return;
 }
