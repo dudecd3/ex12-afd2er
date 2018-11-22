@@ -85,5 +85,5 @@ void insereNaFuncaoDelta (delta_t **d, int ei, char c, int ef);
 void insereNosEstadosFinais (ef_t **p, int f);
 void imprimeQuintupla (quint_t q);
 void imprimeListaDeEstadosFinais (quint_t q);
-void imprimeFuncaoDelta (quint_t);
 
+void imprimeFuncaoDelta (quint_t q);

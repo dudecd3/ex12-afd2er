@@ -312,7 +312,7 @@ void imprimeListaDeEstadosFinais (quint_t q)
     return;
 }
 
-void imprimeFuncaoDelta (quint_t)
+void imprimeFuncaoDelta (quint_t q)
 {
     delta_t *cont = q.d;
 
