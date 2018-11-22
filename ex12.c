@@ -245,6 +245,30 @@ void insereNaFuncaoDelta (delta_t **d, int ei, char c, int ef)
     return;
 }
 
+void insereNosEstadosFinais (ef_t **p, int f)
+{
+    ef_t *cont = *p;;
+    ef_t *ant = NULL;
+    int i;
+
+    while(cont != NULL)
+    {
+        ant = cont;
+        cont = cont->prox;
+    }
+    cont = malloc(sizeof(ef_t));
+    cont->prox = NULL;
+
+    cont->f = f;
+
+    if(ant != NULL)
+        ant->prox = cont;
+    else
+        *d = cont;
+
+    return;
+}
+
 int finalDoVetor (char s[SBUFF])
 {
     int i = 0;
