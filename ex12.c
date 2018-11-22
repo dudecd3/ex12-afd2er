@@ -326,7 +326,7 @@ void imprimeFuncaoDelta (quint_t q)
 
 void criaEstadoInicial (quint_t *q)
 {
-    insereNaFuncaoDelta(q->k, 'E', q->s0);
+    insereNaFuncaoDelta(&q->d, q->k, 'E', q->s0);
     q->s0 = q->k;
 
     return;
