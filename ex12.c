@@ -296,6 +296,18 @@ void imprimeQuintupla (quint_t q)
 
     return;
 }
+
+void imprimeListaDeEstadosFinais (quint_t q)
+{
+    ef_t *cont = q.f;
+
+    while(cont != NULL)
+    {
+        printf("%d\n", cont->f);
+        cont = cont->prox;
+    }
+    return;
+}
 /* ---------------------------------------------------------------------- */
 /**
  * @ingroup GroupUnique
