@@ -293,6 +293,8 @@ void imprimeQuintupla (quint_t q)
     printf("numero de estados = %d\n", q.k);
     printf("ultima letra do alfabeto = %c\n", q.a);
     printf("estado inicial = %d\n", q.s0);
+    imprimeListaDeEstadosFinais(q);
+    imprimeFuncaoDelta(q);
 
     return;
 }
