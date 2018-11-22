@@ -203,18 +203,25 @@ void pegaEntrada (quint_t *q, FILE *arq)
     {
         if(s[i] != ' ' && s[i] != '\n')
         {
-            pf[c] = atoi(s[i]);
+            pf[c] = (int)(s[i]);
             c++;
         }
         i++;
     }
-    /*insere na lista de estados finais */
+
+    i = 0;
+    while(pf[i] != '\0')
+    {
+        insereNosEstadosFinais(&q->p, pf[i]);
+        i++;
+    }
 
     while(!feof(arq))
     {
         fscanf(arq, "%d %c %d\n", &pei, &pc, &pef);
-        /* insere na funcao delta */
+        insereNaFuncaoDelta(&q->d, pei, pc, pef);
     }
+
     return;
 }
 
