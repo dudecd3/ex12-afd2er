@@ -217,6 +217,23 @@ void pegaEntrada (quint_t *q, FILE *arq)
     }
     return;
 }
+
+void insereNaFuncaoDelta (delta_t **d, int ei, char c, int ef)
+{
+    delta_t *cont = *d;;
+    delta_t *ant = NULL;
+
+    while(cont != NULL)
+    {
+        ant = cont;
+        cont = cont->prox;
+    }
+    cont = malloc(sizeof(delta_t));
+    cont->prox = NULL;
+    cont->ei = ei;
+    
+    return;
+}
 /* ---------------------------------------------------------------------- */
 /**
  * @ingroup GroupUnique
