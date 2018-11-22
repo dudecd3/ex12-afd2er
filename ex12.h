@@ -1,8 +1,8 @@
 
 /***************************************************************************
- *   exnove.h                                 Version 20160520.000202      *
+ *   ex12.h                                 Version 20160520.000202      *
  *                                                                         *
- *   Library for exnove, a program that convert AFD into Exp Reg           *
+ *   Library for ex12, a program that convert AFD into Exp Reg           *
  *   Copyright (C) 2016         by Ruben Carlo Benante                     *
  ***************************************************************************
  *   This program is free software; you can redistribute it and/or modify  *
@@ -54,6 +54,6 @@ static int verb=0; /**< verbose level, global within the file */
 
 void help(void); /* print some help */
 void copyr(void); /* print version and copyright information */
-void exnove_init(void); /* global initialization function */
+void ex12_init(void); /* global initialization function */
 int funcexample(int i, int *o, int *z); /* just an example with complete doxygen fields */
 

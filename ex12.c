@@ -1,5 +1,5 @@
 /***************************************************************************
- *   exnove.c                                 Version 20160520.000202      *
+ *   ex12.c                                 Version 20160520.000202      *
  *                                                                         *
  *   Convert AFD into Exp Reg                                              *
  *   Copyright (C) 2016         by Ruben Carlo Benante                     *
@@ -27,7 +27,7 @@
 
 /* ---------------------------------------------------------------------- */
 /**
- * @file exnove.c
+ * @file ex12.c
  * @ingroup GroupUnique
  * @brief Convert AFD into Exp Reg
  * @details This program really do a nice job as a template, and template only!
@@ -60,7 +60,7 @@
 
 /*
  * Instrucoes para compilar:
- *   $gcc exnove.c -o exnove.x -Wall
+ *   $gcc ex12.c -o ex12.x -Wall
  *        -Wextra -ansi -pedantic-errors -g -O0 -DDEBUG=1
  */
 
@@ -70,7 +70,7 @@
 #include <stdio.h> /* Standard I/O functions */
 #include <stdlib.h> /* Miscellaneous functions (rand, malloc, srand)*/
 #include <getopt.h> /* get options from system argc/argv */
-#include "exnove.h" /* library with definitions */
+#include "ex12.h" /* library with definitions */
 
 /* #include <time.h> */ /* Time and date functions */
 /* #include <math.h> */ /* Mathematics functions */
@@ -120,7 +120,7 @@
  *
  * @par Example
  * @code
- *    $./exnove -h
+ *    $./ex12 -h
  * @endcode
  *
  * @warning   Be carefull with...
@@ -136,7 +136,7 @@ int main(int argc, char *argv[])
 {
   int opt; /* return from getopt() */
 
-  exnove_init(); /* initialization function */
+  ex12_init(); /* initialization function */
 
   IFDEBUG("Starting optarg loop...\n");
 
@@ -184,8 +184,8 @@ int main(int argc, char *argv[])
 void help(void)
 {
   IFDEBUG("help()");
-  printf("%s v.%s - %s\n", "exnove", VERSION, "Convert AFD into Exp Reg");
-  printf("\nUsage: %s [-h|-v]\n", "exnove");
+  printf("%s v.%s - %s\n", "ex12", VERSION, "Convert AFD into Exp Reg");
+  printf("\nUsage: %s [-h|-v]\n", "ex12");
   printf("\nOptions:\n");
   printf("\t-h,  --help\n\t\tShow this help.\n");
   printf("\t-V,  --version\n\t\tShow version and copyright information.\n");
@@ -211,7 +211,7 @@ void help(void)
 void copyr(void)
 {
   IFDEBUG("copyr()");
-  printf("%s - Version %s\n", "exnove", VERSION);
+  printf("%s - Version %s\n", "ex12", VERSION);
   printf("\nCopyright (C) %d %s <%s>, GNU GPL version 2 <http://gnu.org/licenses/gpl.html>. This  is  free  software:  you are free to change and redistribute it. There is NO WARRANTY, to the extent permitted by law. USE IT AS IT IS. The author takes no responsability to any damage this software may inflige in your data.\n\n", 2016, "Ruben Carlo Benante", "rcb@beco.cc");
   if(verb>3) printf("copyr(): Verbose: %d\n", verb); /* -vvvv */
   exit(EXIT_FAILURE);
@@ -229,9 +229,9 @@ void copyr(void)
  * @date 2016-05-20
  *
  */
-void exnove_init(void)
+void ex12_init(void)
 {
-  IFDEBUG("exnove_init()");
+  IFDEBUG("ex12_init()");
   /* initialization */
   return;
 }
