@@ -331,6 +331,12 @@ void criaEstadoInicial (quint_t *q)
 
     return;
 }
+
+void criaEstadoFinal (quint_t *q)
+{
+    insereNosEstadosFinais(&q->f, (q->k+1));
+    return;
+}
 /* ---------------------------------------------------------------------- */
 /**
  * @ingroup GroupUnique
