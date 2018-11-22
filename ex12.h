@@ -83,4 +83,5 @@ void pegaEntrada (quint_t *q, FILE *arq);
 int finalDoVetor (char s[SBUFF]);
 void insereNaFuncaoDelta (delta_t **d, int ei, char c, int ef);
 void insereNosEstadosFinais (ef_t **p, int f);
+void imprimeQuintupla (quint_t q);
 
