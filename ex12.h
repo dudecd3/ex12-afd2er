@@ -81,4 +81,5 @@ void ex12_init(void); /* global initialization function */
 int funcexample(int i, int *o, int *z); /* just an example with complete doxygen fields */
 void pegaEntrada (quint_t *q, FILE *arq);
 int finalDoVetor (char s[SBUFF]);
+void insereNaFuncaoDelta (delta_t **d, int ei, char c, int ef);
 

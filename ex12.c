@@ -222,6 +222,7 @@ void insereNaFuncaoDelta (delta_t **d, int ei, char c, int ef)
 {
     delta_t *cont = *d;;
     delta_t *ant = NULL;
+    int i;
 
     while(cont != NULL)
     {
@@ -230,8 +231,17 @@ void insereNaFuncaoDelta (delta_t **d, int ei, char c, int ef)
     }
     cont = malloc(sizeof(delta_t));
     cont->prox = NULL;
+
     cont->ei = ei;
-    
+    i = finalDoVetor(cont->s);
+    cont->s[i] = c;
+    cont->ef = ef;
+
+    if(ant != NULL)
+        ant->prox = cont;
+    else
+        *d = cont;
+
     return;
 }
 
