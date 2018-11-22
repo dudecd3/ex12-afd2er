@@ -196,7 +196,7 @@ void pegaEntrada (quint_t *q, FILE *arq)
 
     q->f = NULL;
     q->d = NULL;
-    fscanf("%d\n%c\n%d\n", &pk, &pa, &ps0);
+    fscanf(arq, "%d\n%c\n%d\n", &pk, &pa, &ps0);
 
     fgets(s, sizeof(s), arq);
     while(s[i] != '\0')
@@ -212,7 +212,7 @@ void pegaEntrada (quint_t *q, FILE *arq)
 
     while(!feof(arq))
     {
-        fscanf("%d %c %d\n", &pei, &pc, &pef);
+        fscanf(arq, "%d %c %d\n", &pei, &pc, &pef);
         /* insere na funcao delta */
     }
     return;
