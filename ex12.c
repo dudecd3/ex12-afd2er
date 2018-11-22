@@ -344,6 +344,26 @@ void criaEstadoFinal (quint_t *q)
     insereNaFuncaoDelta(&q->d, q->f->f, 'E', cont->f);
     return;
 }
+
+void apagaEstado (quint_t *q, int e)
+{
+    delta_t *qfinal = NULL;
+    delta_t *qinicial = NULL;
+    delta_t *cont = q->d;
+
+    /* cria duas funcoes delta: */
+    /*uma com as transicoes que tem o estado a se apagar como estado final */
+    /*e uma com as transicoes que tem o estado a se apagar como estado inicial */
+    while(cont != NULL)
+    {
+        if(cont->ef == e)
+            insereNaFuncaoDelta(&qfinal, cont->ei, cont->c, cont->ef);
+        if(cont->ei == e)
+            insereNaFuncaoDelta(&qinicial, cont->ei, cont->c, cont->ef);
+        cont = cont->prox;
+    }
+    return;
+}
 /* ---------------------------------------------------------------------- */
 /**
  * @ingroup GroupUnique
