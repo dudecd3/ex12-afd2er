@@ -135,6 +135,15 @@
 int main(int argc, char *argv[])
 {
   int opt; /* return from getopt() */
+  FILE *arq = NULL;
+  quint_t q;
+
+  arq = fopen("01-entrada.txt", "r");
+  if(arq == NULL)
+  {
+      printf("Erro ao abrir arquivo\n");
+      exit(0);
+  }
 
   ex12_init(); /* initialization function */
 
@@ -170,6 +179,44 @@ int main(int argc, char *argv[])
   return EXIT_SUCCESS;
 }
 
+void pegaEntrada (quint_t *q, FILE *arq)
+{
+    
+    /* as variaveis que comecam com p irao apenas guardar momentaneamente os dados */
+    int pk;
+    char pa;
+    int ps0;
+    char s[SBUFF];
+    int pf[SBUFF];
+    int i = 0;
+    int c = 0;
+    int pei;
+    char pc;
+    int pef;
+
+    q->f = NULL;
+    q->d = NULL;
+    fscanf("%d\n%c\n%d\n", &pk, &pa, &ps0);
+
+    fgets(s, sizeof(s), arq);
+    while(s[i] != '\0')
+    {
+        if(s[i] != ' ' && s[i] != '\n')
+        {
+            pf[c] = atoi(s[i]);
+            c++;
+        }
+        i++;
+    }
+    /*insere na lista de estados finais */
+
+    while(!feof(arq))
+    {
+        fscanf("%d %c %d\n", &pei, &pc, &pef);
+        /* insere na funcao delta */
+    }
+    return;
+}
 /* ---------------------------------------------------------------------- */
 /**
  * @ingroup GroupUnique
