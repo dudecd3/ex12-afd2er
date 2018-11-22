@@ -52,6 +52,29 @@ static int verb=0; /**< verbose level, global within the file */
 /* ---------------------------------------------------------------------- */
 /* prototypes */
 
+typedef struct s_ef
+{
+    int f;
+    struct st_ef *prox;
+} ef_t;
+
+typedef struct s_delta
+{
+    int ei;
+    char s[SBUFF];
+    int ef;
+    struct s_delta *prox;
+} delta_t;
+
+typedef struct s_quintupla
+{
+    int k;
+    char a;
+    int s0;
+    ef_t *f;
+    delta_t *d;
+} quint_t;
+
 void help(void); /* print some help */
 void copyr(void); /* print version and copyright information */
 void ex12_init(void); /* global initialization function */
