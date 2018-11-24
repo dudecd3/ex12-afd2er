@@ -52,7 +52,7 @@ static int verb=0; /**< verbose level, global within the file */
 /* ---------------------------------------------------------------------- */
 /* prototypes */
 
-typedef struct s_ef
+typedef struct st_ef
 {
     int f;
     struct st_ef *prox;
