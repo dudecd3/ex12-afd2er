@@ -422,6 +422,7 @@ ef_t *busca (ef_t *head, int f)
 
   return NULL;
 }
+
 /* ---------------------------------------------------------------------- */
 void removerDelta(delta_t **head, delta_t *r) /* funcao de exclusao */
 {
@@ -447,6 +448,30 @@ void removerDelta(delta_t **head, delta_t *r) /* funcao de exclusao */
   return;
 }
 
+/* ---------------------------------------------------------------------- */
+void removerFinais(ef_t **head, ef_t *r) /* funcao de exclusao */
+{
+  ef_t *cont = *head;
+  ef_t *plant = NULL;
+
+  if(r == NULL)
+    return;
+  while(cont != NULL && cont != r)
+  {
+    plant = cont;
+    cont = cont->prox;
+  }
+  if(cont == NULL) /* nao achou lista vazia */
+    return;
+  if(plant != NULL) /* tem anterior */
+    plant->prox = cont->prox;
+  else /* eliminando a cabeca */
+    *head = cont->prox;
+  
+  free(cont);
+
+  return;
+}
 /* ---------------------------------------------------------------------- */
 /**
  * @ingroup GroupUnique

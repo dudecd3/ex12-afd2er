@@ -91,6 +91,7 @@ void criaEstadoInicial (quint_t *q);
 void apagaEstado (quint_t *q, int e);
 delta_t *busca_ei (delta_t *head, int ei);
 delta_t *busca_ef (delta_t *head, int ef);
-removerDelta(delta_t **head, delta_t *r);
 ef_t *busca (ef_t *head, int f);
+void removerDelta(delta_t **head, delta_t *r);
+void removerFinais(ef_t **head, ef_t *r);
 
