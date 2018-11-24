@@ -257,6 +257,7 @@ void insereNaFuncaoDelta (delta_t **d, int ei, char c, int ef)
   return;
 }
 
+/* ---------------------------------------------------------------------- */
 void novoElementoDelta (delta_t **d, int ei, char vet[SBUFF], int ef)
 {
   delta_t *cont = *d;
