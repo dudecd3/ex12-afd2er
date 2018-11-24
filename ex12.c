@@ -181,6 +181,7 @@ int main(int argc, char *argv[])
   return EXIT_SUCCESS;
 }
 
+/* ---------------------------------------------------------------------- */
 void pegaEntrada (quint_t *q, FILE *arq)
 {
     
@@ -227,6 +228,7 @@ void pegaEntrada (quint_t *q, FILE *arq)
     return;
 }
 
+/* ---------------------------------------------------------------------- */
 void insereNaFuncaoDelta (delta_t **d, int ei, char c, int ef)
 {
     delta_t *cont = *d;;
@@ -254,6 +256,7 @@ void insereNaFuncaoDelta (delta_t **d, int ei, char c, int ef)
     return;
 }
 
+/* ---------------------------------------------------------------------- */
 void insereNosEstadosFinais (ef_t **p, int f)
 {
     ef_t *cont = *p;;
@@ -278,6 +281,7 @@ void insereNosEstadosFinais (ef_t **p, int f)
     return;
 }
 
+/* ---------------------------------------------------------------------- */
 int finalDoVetor (char s[SBUFF])
 {
     int i = 0;
@@ -288,6 +292,7 @@ int finalDoVetor (char s[SBUFF])
     return i;
 }
 
+/* ---------------------------------------------------------------------- */
 void imprimeQuintupla (quint_t q)
 {
     printf("QUINTUPLA\n\n");
@@ -300,6 +305,7 @@ void imprimeQuintupla (quint_t q)
     return;
 }
 
+/* ---------------------------------------------------------------------- */
 void imprimeListaDeEstadosFinais (quint_t q)
 {
     ef_t *cont = q.f;
@@ -312,6 +318,7 @@ void imprimeListaDeEstadosFinais (quint_t q)
     return;
 }
 
+/* ---------------------------------------------------------------------- */
 void imprimeFuncaoDelta (quint_t q)
 {
     delta_t *cont = q.d;
@@ -324,6 +331,7 @@ void imprimeFuncaoDelta (quint_t q)
     return;
 }
 
+/* ---------------------------------------------------------------------- */
 void criaEstadoInicial (quint_t *q)
 {
     insereNaFuncaoDelta(&q->d, q->k, 'E', q->s0);
@@ -332,6 +340,7 @@ void criaEstadoInicial (quint_t *q)
     return;
 }
 
+/* ---------------------------------------------------------------------- */
 void criaEstadoFinal (quint_t *q)
 {
     ef_t *cont = q->f;
@@ -345,6 +354,7 @@ void criaEstadoFinal (quint_t *q)
     return;
 }
 
+/* ---------------------------------------------------------------------- */
 void apagaEstado (quint_t *q, int e)
 {
     delta_t *qfinal = NULL;
@@ -365,6 +375,7 @@ void apagaEstado (quint_t *q, int e)
     return;
 }
 
+/* ---------------------------------------------------------------------- */
 delta_t *busca_ei (delta_t *head, int ei)
 {
     delta_t *cont = head;
@@ -379,6 +390,7 @@ delta_t *busca_ei (delta_t *head, int ei)
     return NULL;
 }
 
+/* ---------------------------------------------------------------------- */
 delta_t *busca_ef (delta_t *head, int ef)
 {
     delta_t *cont = head;
@@ -392,6 +404,7 @@ delta_t *busca_ef (delta_t *head, int ef)
 
     return NULL;
 }
+
 /* ---------------------------------------------------------------------- */
 /**
  * @ingroup GroupUnique
