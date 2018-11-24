@@ -409,6 +409,19 @@ delta_t *busca_ef (delta_t *head, int ef)
   return NULL;
 }
 
+ef_t *busca (ef_t *head, int f)
+{
+  ef_t *cont = head;
+
+  while(cont != NULL)
+  {
+    if(cont->f == f)
+      return cont;
+    cont = cont->prox;
+  }
+
+  return NULL;
+}
 /* ---------------------------------------------------------------------- */
 void removerDelta(delta_t **head, delta_t *r) /* funcao de exclusao */
 {
