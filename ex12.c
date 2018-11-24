@@ -406,25 +406,27 @@ delta_t *busca_ef (delta_t *head, int ef)
 }
 
 /* ---------------------------------------------------------------------- */
-void remover(lista **cabeca, lista *r) /* funcao de exclusao */
+void removerDelta(delta_t **head, delta_t *r) /* funcao de exclusao */
 {
-  lista *pl = *cabeca;
-  lista *plant = NULL;
+  delta_t *cont = *head;
+  delta_t *plant = NULL;
 
   if(r == NULL)
     return;
-  while(pl != NULL && pl != r)
+  while(cont != NULL && cont != r)
   {
-    plant = pl;
-    pl = pl->prox;
+    plant = cont;
+    cont = cont->prox;
   }
-  if(pl == NULL) /* nao achou lista vazia */
+  if(cont == NULL) /* nao achou lista vazia */
     return;
   if(plant != NULL) /* tem anterior */
-    plant->prox = pl->prox;
+    plant->prox = cont->prox;
   else /* eliminando a cabeca */
-    *cabeca = pl->prox;
-  free(pl);
+    *head = cont->prox;
+  
+  free(cont);
+
   return;
 }
 
