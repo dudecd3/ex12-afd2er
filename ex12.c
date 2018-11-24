@@ -345,7 +345,7 @@ void criaEstadoFinal (quint_t *q)
 {
   ef_t *cont = q->f;
   int i;
-  ef_t *busca = NULL;
+  ef_t *b = NULL;
 
   insereNosEstadosFinais(&q->f, (q->k+1));
 
@@ -354,6 +354,8 @@ void criaEstadoFinal (quint_t *q)
 
   insereNaFuncaoDelta(&q->d, q->f->f, 'E', cont->f);
   i = q->f->f;
+  b = busca(q->f, i);
+  removerFinais(&q->f, b);
 
   return;
 }
