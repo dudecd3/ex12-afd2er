@@ -380,6 +380,8 @@ void criaEstadoFinal (quint_t *q)
   insereNaFuncaoDelta(&q->d, q->f->f, 'E', cont->f);
   i = q->f->f;
   b = busca(q->f, i);
+  if(b == NULL) /* para evitar segmentation fault */
+    return;
   removerFinais(&q->f, b);
 
   return;
