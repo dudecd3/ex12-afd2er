@@ -141,8 +141,8 @@ int main(int argc, char *argv[])
   arq = fopen("01-entrada.txt", "r");
   if(arq == NULL)
   {
-      printf("Erro ao abrir arquivo\n");
-      exit(0);
+    printf("Erro ao abrir arquivo\n");
+    exit(0);
   }
   pegaEntrada(&q, arq);
   imprimeQuintupla(q);
@@ -184,225 +184,248 @@ int main(int argc, char *argv[])
 /* ---------------------------------------------------------------------- */
 void pegaEntrada (quint_t *q, FILE *arq)
 {
-    
-    /* as variaveis que comecam com p irao apenas guardar momentaneamente os dados */
-    int pk;
-    char pa;
-    int ps0;
-    char s[SBUFF];
-    int pf[SBUFF];
-    int i = 0;
-    int c = 0;
-    int pei;
-    char pc;
-    int pef;
 
-    q->f = NULL;
-    q->d = NULL;
-    fscanf(arq, "%d\n%c\n%d\n", &pk, &pa, &ps0);
+  /* as variaveis que comecam com p irao apenas guardar momentaneamente os dados */
+  int pk;
+  char pa;
+  int ps0;
+  char s[SBUFF];
+  int pf[SBUFF];
+  int i = 0;
+  int c = 0;
+  int pei;
+  char pc;
+  int pef;
 
-    fgets(s, sizeof(s), arq);
-    while(s[i] != '\0')
+  q->f = NULL;
+  q->d = NULL;
+  fscanf(arq, "%d\n%c\n%d\n", &pk, &pa, &ps0);
+
+  fgets(s, sizeof(s), arq);
+  while(s[i] != '\0')
+  {
+    if(s[i] != ' ' && s[i] != '\n')
     {
-        if(s[i] != ' ' && s[i] != '\n')
-        {
-            pf[c] = (int)(s[i]);
-            c++;
-        }
-        i++;
+      pf[c] = (int)(s[i]);
+      c++;
     }
+    i++;
+  }
 
-    i = 0;
-    while(pf[i] != '\0')
-    {
-        insereNosEstadosFinais(&q->f, pf[i]);
-        i++;
-    }
+  i = 0;
+  while(pf[i] != '\0')
+  {
+    insereNosEstadosFinais(&q->f, pf[i]);
+    i++;
+  }
 
-    while(!feof(arq))
-    {
-        fscanf(arq, "%d %c %d\n", &pei, &pc, &pef);
-        insereNaFuncaoDelta(&q->d, pei, pc, pef);
-    }
+  while(!feof(arq))
+  {
+    fscanf(arq, "%d %c %d\n", &pei, &pc, &pef);
+    insereNaFuncaoDelta(&q->d, pei, pc, pef);
+  }
 
-    return;
+  return;
 }
 
 /* ---------------------------------------------------------------------- */
 void insereNaFuncaoDelta (delta_t **d, int ei, char c, int ef)
 {
-    delta_t *cont = *d;;
-    delta_t *ant = NULL;
-    int i;
+  delta_t *cont = *d;;
+  delta_t *ant = NULL;
+  int i;
 
-    while(cont != NULL)
-    {
-        ant = cont;
-        cont = cont->prox;
-    }
-    cont = malloc(sizeof(delta_t));
-    cont->prox = NULL;
+  while(cont != NULL)
+  {
+    ant = cont;
+    cont = cont->prox;
+  }
+  cont = malloc(sizeof(delta_t));
+  cont->prox = NULL;
 
-    cont->ei = ei;
-    i = finalDoVetor(cont->s);
-    cont->s[i] = c;
-    cont->ef = ef;
+  cont->ei = ei;
+  i = finalDoVetor(cont->s);
+  cont->s[i] = c;
+  cont->ef = ef;
 
-    if(ant != NULL)
-        ant->prox = cont;
-    else
-        *d = cont;
+  if(ant != NULL)
+    ant->prox = cont;
+  else
+    *d = cont;
 
-    return;
+  return;
 }
 
 /* ---------------------------------------------------------------------- */
 void insereNosEstadosFinais (ef_t **p, int f)
 {
-    ef_t *cont = *p;;
-    ef_t *ant = NULL;
-    int i;
+  ef_t *cont = *p;;
+  ef_t *ant = NULL;
+  int i;
 
-    while(cont != NULL)
-    {
-        ant = cont;
-        cont = cont->prox;
-    }
-    cont = malloc(sizeof(ef_t));
-    cont->prox = NULL;
+  while(cont != NULL)
+  {
+    ant = cont;
+    cont = cont->prox;
+  }
+  cont = malloc(sizeof(ef_t));
+  cont->prox = NULL;
 
-    cont->f = f;
+  cont->f = f;
 
-    if(ant != NULL)
-        ant->prox = cont;
-    else
-        *p = cont;
+  if(ant != NULL)
+    ant->prox = cont;
+  else
+    *p = cont;
 
-    return;
+  return;
 }
 
 /* ---------------------------------------------------------------------- */
 int finalDoVetor (char s[SBUFF])
 {
-    int i = 0;
+  int i = 0;
 
-    while(s[i] != '\0')
-        i++;
+  while(s[i] != '\0')
+    i++;
 
-    return i;
+  return i;
 }
 
 /* ---------------------------------------------------------------------- */
 void imprimeQuintupla (quint_t q)
 {
-    printf("QUINTUPLA\n\n");
-    printf("numero de estados = %d\n", q.k);
-    printf("ultima letra do alfabeto = %c\n", q.a);
-    printf("estado inicial = %d\n", q.s0);
-    imprimeListaDeEstadosFinais(q);
-    imprimeFuncaoDelta(q);
+  printf("QUINTUPLA\n\n");
+  printf("numero de estados = %d\n", q.k);
+  printf("ultima letra do alfabeto = %c\n", q.a);
+  printf("estado inicial = %d\n", q.s0);
+  imprimeListaDeEstadosFinais(q);
+  imprimeFuncaoDelta(q);
 
-    return;
+  return;
 }
 
 /* ---------------------------------------------------------------------- */
 void imprimeListaDeEstadosFinais (quint_t q)
 {
-    ef_t *cont = q.f;
+  ef_t *cont = q.f;
 
-    while(cont != NULL)
-    {
-        printf("%d\n", cont->f);
-        cont = cont->prox;
-    }
-    return;
+  while(cont != NULL)
+  {
+    printf("%d\n", cont->f);
+    cont = cont->prox;
+  }
+  return;
 }
 
 /* ---------------------------------------------------------------------- */
 void imprimeFuncaoDelta (quint_t q)
 {
-    delta_t *cont = q.d;
+  delta_t *cont = q.d;
 
-    while(cont != NULL)
-    {
-        printf("(%d, %s, %d)\n", cont->ei, cont->s, cont->ef);
-        cont = cont->prox;
-    }
-    return;
+  while(cont != NULL)
+  {
+    printf("(%d, %s, %d)\n", cont->ei, cont->s, cont->ef);
+    cont = cont->prox;
+  }
+  return;
 }
 
 /* ---------------------------------------------------------------------- */
 void criaEstadoInicial (quint_t *q)
 {
-    insereNaFuncaoDelta(&q->d, q->k, 'E', q->s0);
-    q->s0 = q->k;
+  insereNaFuncaoDelta(&q->d, q->k, 'E', q->s0);
+  q->s0 = q->k;
 
-    return;
+  return;
 }
 
 /* ---------------------------------------------------------------------- */
 void criaEstadoFinal (quint_t *q)
 {
-    ef_t *cont = q->f;
+  ef_t *cont = q->f;
 
-    insereNosEstadosFinais(&q->f, (q->k+1));
+  insereNosEstadosFinais(&q->f, (q->k+1));
 
-    while(cont != NULL)
-        cont = cont->prox;
+  while(cont != NULL)
+    cont = cont->prox;
 
-    insereNaFuncaoDelta(&q->d, q->f->f, 'E', cont->f);
-    return;
+  insereNaFuncaoDelta(&q->d, q->f->f, 'E', cont->f);
+  return;
 }
 
 /* ---------------------------------------------------------------------- */
 void apagaEstado (quint_t *q, int e)
 {
-    delta_t *qfinal = NULL;
-    delta_t *qinicial = NULL;
-    delta_t *cont = q->d;
+  delta_t *qfinal = NULL;
+  delta_t *qinicial = NULL;
+  delta_t *cont = q->d;
 
-    /* cria duas funcoes delta: */
-    /*uma com as transicoes que tem o estado a se apagar como estado final */
-    /*e uma com as transicoes que tem o estado a se apagar como estado inicial */
-    while(cont != NULL)
-    {
-        if(cont->ef == e)
-            insereNaFuncaoDelta(&qfinal, cont->ei, e, cont->ef);
-        if(cont->ei == e)
-            insereNaFuncaoDelta(&qinicial, cont->ei, e, cont->ef);
-        cont = cont->prox;
-    }
-    return;
+  /* cria duas funcoes delta: */
+  /*uma com as transicoes que tem o estado a se apagar como estado final */
+  /*e uma com as transicoes que tem o estado a se apagar como estado inicial */
+  while(cont != NULL)
+  {
+    if(cont->ef == e)
+      insereNaFuncaoDelta(&qfinal, cont->ei, e, cont->ef);
+    if(cont->ei == e)
+      insereNaFuncaoDelta(&qinicial, cont->ei, e, cont->ef);
+    cont = cont->prox;
+  }
+  return;
 }
 
 /* ---------------------------------------------------------------------- */
 delta_t *busca_ei (delta_t *head, int ei)
 {
-    delta_t *cont = head;
-    
-    while(cont != NULL)
-    {
-        if(cont->ei == ei)
-            return cont;
-        cont = cont->prox;
-    }
+  delta_t *cont = head;
 
-    return NULL;
+  while(cont != NULL)
+  {
+    if(cont->ei == ei)
+      return cont;
+    cont = cont->prox;
+  }
+
+  return NULL;
 }
 
 /* ---------------------------------------------------------------------- */
 delta_t *busca_ef (delta_t *head, int ef)
 {
-    delta_t *cont = head;
-    
-    while(cont != NULL)
-    {
-        if(cont->ef == ef)
-            return cont;
-        cont = cont->prox;
-    }
+  delta_t *cont = head;
 
-    return NULL;
+  while(cont != NULL)
+  {
+    if(cont->ef == ef)
+      return cont;
+    cont = cont->prox;
+  }
+
+  return NULL;
+}
+
+/* ---------------------------------------------------------------------- */
+void remover(lista **cabeca, lista *r) /* funcao de exclusao */
+{
+  lista *pl = *cabeca;
+  lista *plant = NULL;
+
+  if(r == NULL)
+    return;
+  while(pl != NULL && pl != r)
+  {
+    plant = pl;
+    pl = pl->prox;
+  }
+  if(pl == NULL) /* nao achou lista vazia */
+    return;
+  if(plant != NULL) /* tem anterior */
+    plant->prox = pl->prox;
+  else /* eliminando a cabeca */
+    *cabeca = pl->prox;
+  free(pl);
+  return;
 }
 
 /* ---------------------------------------------------------------------- */
