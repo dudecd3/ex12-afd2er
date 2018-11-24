@@ -353,7 +353,7 @@ void criaEstadoFinal (quint_t *q)
     cont = cont->prox;
 
   insereNaFuncaoDelta(&q->d, q->f->f, 'E', cont->f);
-  i = q.f->f;
+  i = q->f->f;
 
   return;
 }
