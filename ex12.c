@@ -378,6 +378,20 @@ delta_t *busca_ei (delta_t *head, int ei)
 
     return NULL;
 }
+
+delta_t *busca_ef (delta_t *head, int ef)
+{
+    delta_t *cont = head;
+    
+    while(cont != NULL)
+    {
+        if(cont->ef == ef)
+            return cont;
+        cont = cont->prox;
+    }
+
+    return NULL;
+}
 /* ---------------------------------------------------------------------- */
 /**
  * @ingroup GroupUnique
