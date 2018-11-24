@@ -474,6 +474,7 @@ void removerFinais(ef_t **head, ef_t *r) /* funcao de exclusao */
 
   return;
 }
+
 /* ---------------------------------------------------------------------- */
 /**
  * @ingroup GroupUnique
