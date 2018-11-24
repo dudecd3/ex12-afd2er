@@ -357,9 +357,9 @@ void apagaEstado (quint_t *q, int e)
     while(cont != NULL)
     {
         if(cont->ef == e)
-            insereNaFuncaoDelta(&qfinal, cont->ei, cont->c, cont->ef);
+            insereNaFuncaoDelta(&qfinal, cont->ei, e, cont->ef);
         if(cont->ei == e)
-            insereNaFuncaoDelta(&qinicial, cont->ei, cont->c, cont->ef);
+            insereNaFuncaoDelta(&qinicial, cont->ei, e, cont->ef);
         cont = cont->prox;
     }
     return;
