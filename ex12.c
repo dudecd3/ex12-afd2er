@@ -256,6 +256,31 @@ void insereNaFuncaoDelta (delta_t **d, int ei, char c, int ef)
   return;
 }
 
+void novoElementoDelta (delta_t **d, int ei, char vet[SBUFF], int ef)
+{
+  delta_t *cont = *d;
+  delta_t *ant = NULL;
+
+  while(cont != NULL)
+  {
+    ant = cont;
+    cont = cont->prox;
+  }
+
+  cont = malloc(sizeof(delta_t));
+  cont->prox = NULL;
+  cont->ei = ei;
+  strcpy(cont->s, vet);
+  cont->ef = ef;
+
+  if(ant != NULL)
+    ant->prox = cont;
+  else
+    *d = cont;
+
+  return;
+}
+
 /* ---------------------------------------------------------------------- */
 void insereNosEstadosFinais (ef_t **p, int f)
 {
@@ -366,6 +391,8 @@ void apagaEstado (quint_t *q, int e)
   delta_t *qfinal = NULL;
   delta_t *qinicial = NULL;
   delta_t *cont = q->d;
+  delta_t *qicont = NULL;
+  delta_t *qfcont = NULL;
 
   /* cria duas funcoes delta: */
   /*uma com as transicoes que tem o estado a se apagar como estado final */
@@ -378,6 +405,20 @@ void apagaEstado (quint_t *q, int e)
       insereNaFuncaoDelta(&qinicial, cont->ei, e, cont->ef);
     cont = cont->prox;
   }
+
+  qicont = qinicial;
+  qfcont = qfinal;
+
+  while(qicont != NULL)
+  {
+    while(qfcont != NULL)
+    {
+      
+      qfcont = qfcont->prox;
+    }
+    qicont = qicont->prox;
+  }
+  
   return;
 }
 

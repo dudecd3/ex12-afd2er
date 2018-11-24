@@ -94,4 +94,5 @@ delta_t *busca_ef (delta_t *head, int ef);
 ef_t *busca (ef_t *head, int f);
 void removerDelta(delta_t **head, delta_t *r);
 void removerFinais(ef_t **head, ef_t *r);
+void novoElementoDelta (delta_t **d, int ei, char vet[SBUFF], int ef);
 
