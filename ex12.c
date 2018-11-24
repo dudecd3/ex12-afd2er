@@ -287,7 +287,6 @@ void insereNosEstadosFinais (ef_t **p, int f)
 {
   ef_t *cont = *p;;
   ef_t *ant = NULL;
-  int i;
 
   while(cont != NULL)
   {
