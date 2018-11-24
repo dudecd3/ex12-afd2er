@@ -364,6 +364,20 @@ void apagaEstado (quint_t *q, int e)
     }
     return;
 }
+
+delta_t *busca_ei (delta_t *head, int ei)
+{
+    delta_t *cont = head;
+    
+    while(cont != NULL)
+    {
+        if(cont->ei == ei)
+            return cont;
+        cont = cont->prox;
+    }
+
+    return NULL;
+}
 /* ---------------------------------------------------------------------- */
 /**
  * @ingroup GroupUnique
