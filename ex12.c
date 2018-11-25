@@ -375,7 +375,6 @@ void criaEstadoInicial (quint_t *q)
 void criaEstadoFinal (quint_t *q)
 {
   ef_t *cont = q->f;
-  int i;
   ef_t *b = NULL;
 
   insereNosEstadosFinais(&q->f, (q->k+1));
@@ -384,7 +383,6 @@ void criaEstadoFinal (quint_t *q)
     cont = cont->prox;
 
   insereNaFuncaoDelta(&q->d, q->f->f, 'E', cont->f);
-  i = q->f->f - ZERO_EM_ASCII;
   b = busca(q->f, q->f->f);
   if(b == NULL) /* para evitar segmentation fault */
     return;
