@@ -149,6 +149,8 @@ int main(int argc, char *argv[])
   criaEstadoInicial(&q);
   criaEstadoFinal(&q);
   imprimeQuintupla(q);
+  apagaEstado(&q, 0);
+  imprimeQuintupla(q);
 
   /*ex12_init();  initialization function */
 
