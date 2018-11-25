@@ -201,6 +201,9 @@ void pegaEntrada (quint_t *q, FILE *arq)
   q->f = NULL;
   q->d = NULL;
   fscanf(arq, "%d\n%c\n%d\n", &pk, &pa, &ps0);
+  q->k = pk;
+  q->a = pa;
+  q->s0 = ps0;
 
   fgets(s, sizeof(s), arq);
   while(s[i] != '\0')
