@@ -147,6 +147,7 @@ int main(int argc, char *argv[])
   }
   pegaEntrada(&q, arq);
   criaEstadoInicial(&q);
+  criaEstadoFinal(&q);
   imprimeQuintupla(q);
 
   /*ex12_init();  initialization function */
@@ -378,12 +379,14 @@ void criaEstadoFinal (quint_t *q)
   ef_t *b = NULL;
 
   insereNosEstadosFinais(&q->f, (q->k+1));
+  printf("inseri o novo estado\n");
 
-  while(cont != NULL)
+  while(cont->prox != NULL)
     cont = cont->prox;
 
   insereNaFuncaoDelta(&q->d, q->f->f, 'E', cont->f);
-  i = q->f->f;
+  printf("inseri a nova transicao\n");
+  i = q->f->f - ZERO_EM_ASCII;
   b = busca(q->f, i);
   if(b == NULL) /* para evitar segmentation fault */
     return;

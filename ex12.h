@@ -43,6 +43,7 @@
 
 /* limits */
 #define SBUFF 20 /**< String buffer */
+#define ZERO_EM_ASCII 48
 
 /* ---------------------------------------------------------------------- */
 /* globals */
