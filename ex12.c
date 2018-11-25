@@ -333,7 +333,7 @@ void imprimeQuintupla (quint_t q)
   printf("ultima letra do alfabeto = %c\n", q.a);
   printf("estado inicial = %d\n", q.s0);
   imprimeListaDeEstadosFinais(q);
-  imprimeFuncaoDelta(q);
+  imprimeFuncaoDelta(q.d);
 
   return;
 }
@@ -352,9 +352,9 @@ void imprimeListaDeEstadosFinais (quint_t q)
 }
 
 /* ---------------------------------------------------------------------- */
-void imprimeFuncaoDelta (quint_t q)
+void imprimeFuncaoDelta (delta_t *head)
 {
-  delta_t *cont = q.d;
+  delta_t *cont = head;
 
   while(cont != NULL)
   {
@@ -420,9 +420,9 @@ void apagaEstado (quint_t *q, int e)
 
   printf("\nDEBUG\n\n");
   printf("qicont\n");
-  imprimeFuncaoDelta(*qicont);
+  imprimeFuncaoDelta(qicont);
   printf("\nqfcont\n");
-  imprimeFuncaoDelta(*qfcont);
+  imprimeFuncaoDelta(qfcont);
 
   while(qicont != NULL)
   {
