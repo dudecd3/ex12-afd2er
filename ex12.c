@@ -418,6 +418,12 @@ void apagaEstado (quint_t *q, int e)
   qicont = qinicial;
   qfcont = qfinal;
 
+  printf("\nDEBUG\n\n");
+  printf("qicont\n");
+  imprimeFuncaoDelta(*qicont);
+  printf("\nqfcont\n");
+  imprimeFuncaoDelta(*qfcont);
+
   while(qicont != NULL)
   {
     while(qfcont != NULL)
