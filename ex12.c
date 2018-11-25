@@ -264,6 +264,31 @@ void insereNaFuncaoDelta (delta_t **d, int ei, char c, int ef)
   return;
 }
 
+void insereComVetorNaFuncaoDelta (delta_t **d, int ei, char s[SBUFF], int ef)
+{
+  delta_t *cont = *d;;
+  delta_t *ant = NULL;
+
+  while(cont != NULL)
+  {
+    ant = cont;
+    cont = cont->prox;
+  }
+  cont = malloc(sizeof(delta_t));
+  cont->prox = NULL;
+
+  cont->ei = ei;
+  strcpy(cont->s, s);
+  cont->ef = ef;
+
+  if(ant != NULL)
+    ant->prox = cont;
+  else
+    *d = cont;
+
+  return;
+}
+
 /* ---------------------------------------------------------------------- */
 void novoElementoDelta (delta_t **d, int ei, char vet[SBUFF], int ef)
 {
@@ -409,9 +434,9 @@ void apagaEstado (quint_t *q, int e)
   while(cont != NULL)
   {
     if(cont->ef == e)
-      insereNaFuncaoDelta(&qfinal, cont->ei, e, cont->ef);
+      insereComVetorNaFuncaoDelta(&qfinal, cont->ei, cont->s, cont->ef);
     if(cont->ei == e)
-      insereNaFuncaoDelta(&qinicial, cont->ei, e, cont->ef);
+      insereComVetorNaFuncaoDelta(&qfinal, cont->ei, cont->s, cont->ef);
     cont = cont->prox;
   }
 
