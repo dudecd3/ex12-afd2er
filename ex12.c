@@ -212,7 +212,7 @@ void pegaEntrada (quint_t *q, FILE *arq)
   {
     if(s[i] != ' ' && s[i] != '\n')
     {
-      pf[c] = (s[i]);
+      pf[c] = s[i] - ZERO_EM_ASCII;
       c++;
     }
     i++;
