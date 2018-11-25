@@ -379,15 +379,13 @@ void criaEstadoFinal (quint_t *q)
   ef_t *b = NULL;
 
   insereNosEstadosFinais(&q->f, (q->k+1));
-  printf("inseri o novo estado\n");
 
   while(cont->prox != NULL)
     cont = cont->prox;
 
   insereNaFuncaoDelta(&q->d, q->f->f, 'E', cont->f);
-  printf("inseri a nova transicao\n");
   i = q->f->f - ZERO_EM_ASCII;
-  b = busca(q->f, i);
+  b = busca(q->f, q->f->f);
   if(b == NULL) /* para evitar segmentation fault */
     return;
   removerFinais(&q->f, b);
