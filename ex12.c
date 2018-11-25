@@ -148,9 +148,9 @@ int main(int argc, char *argv[])
   pegaEntrada(&q, arq);
   imprimeQuintupla(q);
 
-  ex12_init(); /* initialization function */
+  /*ex12_init();  initialization function */
 
-  IFDEBUG("Starting optarg loop...\n");
+  /*IFDEBUG("Starting optarg loop...\n"); */
 
   /* getopt() configured options:
    *        -h  help
@@ -210,7 +210,7 @@ void pegaEntrada (quint_t *q, FILE *arq)
   {
     if(s[i] != ' ' && s[i] != '\n')
     {
-      pf[c] = (int)(s[i]);
+      pf[c] = (s[i]);
       c++;
     }
     i++;
