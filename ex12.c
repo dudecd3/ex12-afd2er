@@ -401,6 +401,7 @@ void apagaEstado (quint_t *q, int e)
   delta_t *cont = q->d;
   delta_t *qicont = NULL;
   delta_t *qfcont = NULL;
+  char vet[SBUFF];
 
   /* cria duas funcoes delta: */
   /*uma com as transicoes que tem o estado a se apagar como estado final */
@@ -421,7 +422,10 @@ void apagaEstado (quint_t *q, int e)
   {
     while(qfcont != NULL)
     {
-      
+      montaTransicao(qicont->s, qfcont->s, vet);
+      novoElementoDelta(&q->d, qicont->ei, vet, qfcont->ef);
+      removerDelta(&q->d, qicont);
+      removerDelta(&q->d, qfcont);
       qfcont = qfcont->prox;
     }
     qicont = qicont->prox;
