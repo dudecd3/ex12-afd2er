@@ -469,6 +469,25 @@ ef_t *busca (ef_t *head, int f)
   return NULL;
 }
 
+void montaTransicao (char sei[SBUFF], char sef[SBUFF], char vet[SBUFF])
+{
+    char vetor[SBUFF];
+    int i = 0;
+    int j = 0;
+
+    while(sei[i] != '\0')
+    {
+        vetor[i] = sei[i];
+        i++;
+    }
+    while(sef[j] != '\0')
+    {
+        vetor[i+j] = sef[j];
+        j++;
+    }
+    strcpy(vet, vetor);
+    return;
+}
 /* ---------------------------------------------------------------------- */
 void removerDelta(delta_t **head, delta_t *r) /* funcao de exclusao */
 {
