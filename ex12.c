@@ -434,7 +434,7 @@ void apagaEstado (quint_t *q, int e)
   while(cont != NULL)
   {
     if(cont->ef == e)
-      insereComVetorNaFuncaoDelta(&qfinal, cont->ei, cont->s, cont->ef);
+      insereComVetorNaFuncaoDelta(&qinicial, cont->ei, cont->s, cont->ef);
     if(cont->ei == e)
       insereComVetorNaFuncaoDelta(&qfinal, cont->ei, cont->s, cont->ef);
     cont = cont->prox;
