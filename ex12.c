@@ -146,6 +146,7 @@ int main(int argc, char *argv[])
     exit(0);
   }
   pegaEntrada(&q, arq);
+  criaEstadoInicial(&q);
   imprimeQuintupla(q);
 
   /*ex12_init();  initialization function */
