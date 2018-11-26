@@ -189,7 +189,6 @@ int main(int argc, char *argv[])
 /* ---------------------------------------------------------------------- */
 void pegaEntrada (quint_t *q, FILE *arq)
 {
-
   /* as variaveis que comecam com p irao apenas guardar momentaneamente os dados */
   int pk;
   char pa;
@@ -221,10 +220,10 @@ void pegaEntrada (quint_t *q, FILE *arq)
   }
 
   i = 0;
-  while(pf[i] != '\0')
+  /* while(pf[i] != '\0') */
+  for(i = 0; i < c; i++)
   {
     insereNosEstadosFinais(&q->f, pf[i]);
-    i++;
   }
 
   while(!feof(arq))
