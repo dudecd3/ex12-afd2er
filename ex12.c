@@ -516,6 +516,7 @@ ef_t *busca (ef_t *head, int f)
 }
 
 /* ---------------------------------------------------------------------- */
+/* essa funcao esta com problema */
 void montaTransicao (char sei[SBUFF], char sef[SBUFF], char vet[SBUFF])
 {
     char vetor[SBUFF];
@@ -533,6 +534,7 @@ void montaTransicao (char sei[SBUFF], char sef[SBUFF], char vet[SBUFF])
         j++;
     }
     strcpy(vet, vetor);
+    printf("vet = %s\n", vet);
     return;
 }
 
