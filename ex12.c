@@ -427,6 +427,7 @@ void apagaEstado (quint_t *q, int e)
   delta_t *qicont = NULL;
   delta_t *qfcont = NULL;
   char vet[SBUFF];
+  int i;
 
   /* cria duas funcoes delta: */
   /*uma com as transicoes que tem o estado a se apagar como estado final */
@@ -453,8 +454,12 @@ void apagaEstado (quint_t *q, int e)
   {
     while(qfcont != NULL)
     {
+      for(i = 0; i < SBUFF; i++)
+        vet[i] = 0;
       montaTransicao(qicont->s, qfcont->s, vet);
+      printf("transeicao criada: %s\n", vet);
       novoElementoDelta(&q->d, qicont->ei, vet, qfcont->ef);
+      printf("Vou remover o ei = %d e o ef = %d, cujas transicoes sao si = %s e sf = %s\n", qicont->ei, qfcont->ef, qicont->s, qfcont->s);
       removerDelta(&q->d, qicont);
       removerDelta(&q->d, qfcont);
       qfcont = qfcont->prox;
@@ -517,12 +522,12 @@ void montaTransicao (char sei[SBUFF], char sef[SBUFF], char vet[SBUFF])
     int i = 0;
     int j = 0;
 
-    while(sei[i] != '\0')
+    while(sei[i] != 0)
     {
         vetor[i] = sei[i];
         i++;
     }
-    while(sef[j] != '\0')
+    while(sef[j] != 0)
     {
         vetor[i+j] = sef[j];
         j++;
@@ -544,7 +549,7 @@ void removerDelta(delta_t **head, delta_t *r) /* funcao de exclusao */
     plant = cont;
     cont = cont->prox;
   }
-  if(cont == NULL) /* nao achou lista vazia */
+  if(cont == NULL) /* nao achou  */
     return;
   if(plant != NULL) /* tem anterior */
     plant->prox = cont->prox;
