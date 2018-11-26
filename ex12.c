@@ -264,6 +264,7 @@ void insereNaFuncaoDelta (delta_t **d, int ei, char c, int ef)
   return;
 }
 
+/* ---------------------------------------------------------------------- */
 void insereComVetorNaFuncaoDelta (delta_t **d, int ei, char s[SBUFF], int ef)
 {
   delta_t *cont = *d;;
@@ -495,6 +496,7 @@ delta_t *busca_ef (delta_t *head, int ef)
   return NULL;
 }
 
+/* ---------------------------------------------------------------------- */
 ef_t *busca (ef_t *head, int f)
 {
   ef_t *cont = head;
@@ -509,6 +511,7 @@ ef_t *busca (ef_t *head, int f)
   return NULL;
 }
 
+/* ---------------------------------------------------------------------- */
 void montaTransicao (char sei[SBUFF], char sef[SBUFF], char vet[SBUFF])
 {
     char vetor[SBUFF];
@@ -528,6 +531,7 @@ void montaTransicao (char sei[SBUFF], char sef[SBUFF], char vet[SBUFF])
     strcpy(vet, vetor);
     return;
 }
+
 /* ---------------------------------------------------------------------- */
 void removerDelta(delta_t **head, delta_t *r) /* funcao de exclusao */
 {
