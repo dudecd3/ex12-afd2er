@@ -519,22 +519,25 @@ ef_t *busca (ef_t *head, int f)
 /* essa funcao esta com problema */
 void montaTransicao (char sei[SBUFF], char sef[SBUFF], char vet[SBUFF])
 {
-    char vetor[SBUFF];
-    int i = 0;
-    int j = 0;
-
-    while(sei[i] != 0)
+    char vetor[SBUFF]="\0";
+    
+    /*do
     {
         vetor[i] = sei[i];
         i++;
-    }
-    while(sef[j] != 0)
+    }while(i<strlen(sei));
+   // vetor[i-1]="\0";
+    do
     {
         vetor[i+j] = sef[j];
         j++;
-    }
-    strcpy(vet, vetor);
-    printf("vet = %s\n", vet);
+    }while(j<strlen(sef));*/
+      strcat(vetor, sei);
+      strcat(vetor, sef);
+
+      strcpy(vet, vetor);
+     
+    printf("vet = %s",vet);
     return;
 }
 
