@@ -471,17 +471,18 @@ void apagaEstado (quint_t *q, int e)
 }
 
 /* ---------------------------------------------------------------------- */
-delta_t *busca (delta_t *head, int ei, int ef, char vet[SBUFF])
+delta_t *buscaDelta (delta_t *head, int ei, int ef, char vet[SBUFF])
 {
   delta_t *cont = head;
 
   while(cont != NULL)
   {
-    if(cont->ei == ei && cont->ef == ef
+    if(cont->ei == ei && cont->ef == ef && verificaIgualdadeString(cont->s, vet))
+      return cont;
     cont = cont->prox;
   }
 
-  return;
+  return NULL;
 }
 
 int verificaIgualdadeString (char vet1[SBUFF], char vet2[SBUFF])
