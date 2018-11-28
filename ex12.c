@@ -471,34 +471,33 @@ void apagaEstado (quint_t *q, int e)
 }
 
 /* ---------------------------------------------------------------------- */
-delta_t *busca_ei (delta_t *head, int ei)
+delta_t *busca (delta_t *head, int ei, int ef, char vet[SBUFF])
 {
   delta_t *cont = head;
 
   while(cont != NULL)
   {
-    if(cont->ei == ei)
-      return cont;
+    if(cont->ei == ei && cont->ef == ef
     cont = cont->prox;
   }
 
-  return NULL;
+  return;
+}
+
+int verificaIgualdadeString (char vet1[SBUFF], char vet2[SBUFF])
+{
+  int i;
+
+  for(i = 0; i < SBUFF; i++)
+  {
+    if(vet1[i] != vet2[i])
+      return 0;
+  }
+
+  return 1;
 }
 
 /* ---------------------------------------------------------------------- */
-delta_t *busca_ef (delta_t *head, int ef)
-{
-  delta_t *cont = head;
-
-  while(cont != NULL)
-  {
-    if(cont->ef == ef)
-      return cont;
-    cont = cont->prox;
-  }
-
-  return NULL;
-}
 
 /* ---------------------------------------------------------------------- */
 ef_t *busca (ef_t *head, int f)
