@@ -460,8 +460,6 @@ void apagaEstado (quint_t *q, int e)
       printf("transeicao criada: %s\n", vet);
       novoElementoDelta(&q->d, qicont->ei, vet, qfcont->ef);
       printf("Vou remover o ei = %d e o ef = %d, cujas transicoes sao si = %s e sf = %s\n", qicont->ei, qfcont->ef, qicont->s, qfcont->s);
-      removerDelta(&q->d, qicont);
-      removerDelta(&q->d, qfcont);
       qfcont = qfcont->prox;
     }
     qicont = qicont->prox;
@@ -477,14 +475,13 @@ delta_t *buscaDelta (delta_t *head, int ei, int ef, char vet[SBUFF])
 
   while(cont != NULL)
   {
-    if(cont->ei == ei && cont->ef == ef && verificaIgualdadeString(cont->s, vet))
+    if(cont->ei == ei && cont->ef == ef && !strcmp(cont->s, vet))
       return cont;
     cont = cont->prox;
   }
 
   return NULL;
 }
-
 
 /* ---------------------------------------------------------------------- */
 
