@@ -426,6 +426,7 @@ void apagaEstado (quint_t *q, int e)
   delta_t *cont = q->d;
   delta_t *qicont = NULL;
   delta_t *qfcont = NULL;
+  delta_t *busc = NULL;
   char vet[SBUFF];
   int i;
 
@@ -462,6 +463,15 @@ void apagaEstado (quint_t *q, int e)
       printf("Vou remover o ei = %d e o ef = %d, cujas transicoes sao si = %s e sf = %s\n", qicont->ei, qfcont->ef, qicont->s, qfcont->s);
       qfcont = qfcont->prox;
     }
+    qfcont = qfinal;
+    while(qfcont != NULL)
+    {
+      busc = buscaDelta(q->d, qfcont->ei, qfcont->ef, qfcont->s);
+      if(busc != NULL)
+        removerDelta(&q->d, busc);
+      qfcont = qfcont->prox;
+    }
+    
     qicont = qicont->prox;
   }
   
