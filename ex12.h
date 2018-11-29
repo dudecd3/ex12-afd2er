@@ -90,11 +90,11 @@ void imprimeFuncaoDelta (delta_t *head);
 void criaEstadoInicial (quint_t *q);
 void criaEstadoFinal (quint_t *q);
 void apagaEstado (quint_t *q, int e);
+delta_t *buscaDelta (delta_t *head, int ei, int ef, char vet[SBUFF]);
 ef_t *busca (ef_t *head, int f);
 void removerDelta(delta_t **head, delta_t *r);
 void removerFinais(ef_t **head, ef_t *r);
 void novoElementoDelta (delta_t **d, int ei, char vet[SBUFF], int ef);
 void montaTransicao (char sei[SBUFF], char sef[SBUFF], char vet[SBUFF]);
 void insereComVetorNaFuncaoDelta (delta_t **d, int ei, char s[SBUFF], int ef);
-
 
