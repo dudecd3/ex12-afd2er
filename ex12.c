@@ -485,18 +485,6 @@ delta_t *buscaDelta (delta_t *head, int ei, int ef, char vet[SBUFF])
   return NULL;
 }
 
-int verificaIgualdadeString (char vet1[SBUFF], char vet2[SBUFF])
-{
-  int i;
-
-  for(i = 0; i < SBUFF; i++)
-  {
-    if(vet1[i] != vet2[i])
-      return 0;
-  }
-
-  return 1;
-}
 
 /* ---------------------------------------------------------------------- */
 

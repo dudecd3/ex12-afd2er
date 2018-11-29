@@ -97,6 +97,4 @@ void removerFinais(ef_t **head, ef_t *r);
 void novoElementoDelta (delta_t **d, int ei, char vet[SBUFF], int ef);
 void montaTransicao (char sei[SBUFF], char sef[SBUFF], char vet[SBUFF]);
 void insereComVetorNaFuncaoDelta (delta_t **d, int ei, char s[SBUFF], int ef);
-int verificaIgualdadeString (char vet1[SBUFF], char vet2[SBUFF]);
-
 
