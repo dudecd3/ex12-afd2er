@@ -471,34 +471,6 @@ void apagaEstado (quint_t *q, int e)
 }
 
 /* ---------------------------------------------------------------------- */
-delta_t *busca_ei (delta_t *head, int ei)
-{
-  delta_t *cont = head;
-
-  while(cont != NULL)
-  {
-    if(cont->ei == ei)
-      return cont;
-    cont = cont->prox;
-  }
-
-  return NULL;
-}
-
-/* ---------------------------------------------------------------------- */
-delta_t *busca_ef (delta_t *head, int ef)
-{
-  delta_t *cont = head;
-
-  while(cont != NULL)
-  {
-    if(cont->ef == ef)
-      return cont;
-    cont = cont->prox;
-  }
-
-  return NULL;
-}
 
 /* ---------------------------------------------------------------------- */
 ef_t *busca (ef_t *head, int f)
