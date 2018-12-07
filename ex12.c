@@ -457,11 +457,17 @@ void apagaEstado (quint_t *q, int e)
     {
       for(i = 0; i < SBUFF; i++)
         vet[i] = 0;
-      montaTransicao(qicont->s, qfcont->s, vet);
-      printf("transeicao criada: %s\n", vet);
-      novoElementoDelta(&q->d, qicont->ei, vet, qfcont->ef);
-      printf("Vou remover o ei = %d e o ef = %d, cujas transicoes sao si = %s e sf = %s\n", qicont->ei, qfcont->ef, qicont->s, qfcont->s);
-      qfcont = qfcont->prox;
+      if(qfcont->ei == qfcont->ef)
+      {
+      }
+      else
+      {
+        montaTransicao(qicont->s, qfcont->s, vet);
+        printf("transeicao criada: %s\n", vet);
+        novoElementoDelta(&q->d, qicont->ei, vet, qfcont->ef);
+        printf("Vou remover o ei = %d e o ef = %d, cujas transicoes sao si = %s e sf = %s\n", qicont->ei, qfcont->ef, qicont->s, qfcont->s);
+        qfcont = qfcont->prox;
+      }
     }
     qfcont = qfinal;
     while(qfcont != NULL)
