@@ -151,6 +151,8 @@ int main(int argc, char *argv[])
   imprimeQuintupla(q);
   apagaEstado(&q, 0);
   imprimeQuintupla(q);
+  apagaEstado(&q, 1);
+  imprimeQuintupla(q);
 
   /*ex12_init();  initialization function */
 
@@ -506,6 +508,20 @@ void montaTransicaoKleene(char kleene[SBUFF], char vet[SBUFF])
   return;
 }
 /* ---------------------------------------------------------------------- */
+delta_t *buscaTransicaoCabecaKleene (delta_t *head, int e)
+{
+  delta_t *cont = head;
+
+  while(cont != NULL)
+  {
+    if(cont->ef == e && cont->ei != e)
+      return cont;
+    cont = cont->prox;
+  }
+
+  return NULL;
+}
+
 delta_t *buscaDelta (delta_t *head, int ei, int ef, char vet[SBUFF])
 {
   delta_t *cont = head;
