@@ -99,4 +99,5 @@ void montaTransicao (char sei[SBUFF], char sef[SBUFF], char vet[SBUFF]);
 void insereComVetorNaFuncaoDelta (delta_t **d, int ei, char s[SBUFF], int ef);
 delta_t *buscaTransicaoCabecaKleene (delta_t *head, int e);
 void montaKleene(char kleene[SBUFF], char vet[SBUFF]);
+void montaTransicaoKleene(delta_t *d, char kleene[SBUFF], char vet[SBUFF]);
 

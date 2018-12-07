@@ -507,6 +507,16 @@ void montaKleene(char kleene[SBUFF], char vet[SBUFF])
 
   return;
 }
+
+void montaTransicaoKleene(delta_t *d, char kleene[SBUFF], char vet[SBUFF])
+{
+  char vetor[SBUFF];
+
+  montaTransicao(d->s, kleene, vetor);
+  strcpy(vet, vetor);
+
+  return;
+}
 /* ---------------------------------------------------------------------- */
 delta_t *buscaTransicaoCabecaKleene (delta_t *head, int e)
 {
