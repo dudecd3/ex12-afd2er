@@ -459,6 +459,8 @@ void apagaEstado (quint_t *q, int e)
         vet[i] = 0;
       if(qfcont->ei == qfcont->ef)
       {
+        montaTransicaoKleene(qfcont->s, vet);
+        printf("Transicao criada: %s\n", vet);
       }
       else
       {
