@@ -431,6 +431,7 @@ void apagaEstado (quint_t *q, int e)
   delta_t *busc = NULL;
   char vet[SBUFF];
   int i;
+  char kleene[SBUFF];
 
   /* cria duas funcoes delta: */
   /*uma com as transicoes que tem o estado a se apagar como estado final */
@@ -461,17 +462,21 @@ void apagaEstado (quint_t *q, int e)
         vet[i] = 0;
       if(qfcont->ei == qfcont->ef)
       {
-        montaKleene(qfcont->s, vet);
-        printf("Transicao criada: %s\n", vet);
+        montaKleene(qfcont->s, kleene);
+        busc = buscaTransicaoCabecaKleene(qfinal, qfcont->ei);
+        montaTransicaoKleene(qfcont, kleene, vet);
+        printf("\nTransicao criada: %s\n", vet);
+        novoElementoDelta(&q->d, qicont->ei, vet, qfcont->ef);
+        printf("Vou remover o ei = %d e o ef = %d, cujas transicoes sao si = %s e sf = %s\n", qicont->ei, qfcont->ef, qicont->s, qfcont->s);
       }
       else
       {
         montaTransicao(qicont->s, qfcont->s, vet);
-        printf("transeicao criada: %s\n", vet);
+        printf("\ntranseicao criada: %s\n", vet);
         novoElementoDelta(&q->d, qicont->ei, vet, qfcont->ef);
         printf("Vou remover o ei = %d e o ef = %d, cujas transicoes sao si = %s e sf = %s\n", qicont->ei, qfcont->ef, qicont->s, qfcont->s);
-        qfcont = qfcont->prox;
       }
+      qfcont = qfcont->prox;
     }
     qfcont = qfinal;
     while(qfcont != NULL)
