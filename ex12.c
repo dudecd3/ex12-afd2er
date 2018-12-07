@@ -484,6 +484,25 @@ void apagaEstado (quint_t *q, int e)
   return;
 }
 
+void montaTransicaoKleene(char kleene[SBUFF], char vet[SBUFF])
+{
+  char vetor[SBUFF];
+  int i = 1;
+  int j = 0;
+
+  vetor[0] = '(';
+  while(kleene[j] != '\0')
+  {
+    vetor[i+j] = kleene[j];
+    j++;
+  }
+  vetor[i+j] = ')';
+  vetor[i+j+1] = '*';
+
+  strcpy(vet, vetor);
+
+  return;
+}
 /* ---------------------------------------------------------------------- */
 delta_t *buscaDelta (delta_t *head, int ei, int ef, char vet[SBUFF])
 {
