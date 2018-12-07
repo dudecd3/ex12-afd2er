@@ -461,7 +461,7 @@ void apagaEstado (quint_t *q, int e)
         vet[i] = 0;
       if(qfcont->ei == qfcont->ef)
       {
-        montaTransicaoKleene(qfcont->s, vet);
+        montaKleene(qfcont->s, vet);
         printf("Transicao criada: %s\n", vet);
       }
       else
@@ -488,7 +488,7 @@ void apagaEstado (quint_t *q, int e)
   return;
 }
 
-void montaTransicaoKleene(char kleene[SBUFF], char vet[SBUFF])
+void montaKleene(char kleene[SBUFF], char vet[SBUFF])
 {
   char vetor[SBUFF];
   int i = 1;

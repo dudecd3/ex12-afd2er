@@ -97,6 +97,6 @@ void removerFinais(ef_t **head, ef_t *r);
 void novoElementoDelta (delta_t **d, int ei, char vet[SBUFF], int ef);
 void montaTransicao (char sei[SBUFF], char sef[SBUFF], char vet[SBUFF]);
 void insereComVetorNaFuncaoDelta (delta_t **d, int ei, char s[SBUFF], int ef);
-void montaTransicaoKleene(char kleene[SBUFF], char vet[SBUFF]);
 delta_t *buscaTransicaoCabecaKleene (delta_t *head, int e);
+void montaKleene(char kleene[SBUFF], char vet[SBUFF]);
 
