@@ -151,8 +151,8 @@ int main(int argc, char *argv[])
   imprimeQuintupla(q);
   apagaEstado(&q, 0);
   imprimeQuintupla(q);
-  apagaEstado(&q, 1);
-  imprimeQuintupla(q);
+ /* apagaEstado(&q, 1);
+  imprimeQuintupla(q); */
 
   /*ex12_init();  initialization function */
 
@@ -431,7 +431,7 @@ void apagaEstado (quint_t *q, int e)
   delta_t *busc = NULL;
   char vet[SBUFF];
   int i;
-  char kleene[SBUFF];
+ /* char kleene[SBUFF]; */
 
   /* cria duas funcoes delta: */
   /*uma com as transicoes que tem o estado a se apagar como estado final */
@@ -460,7 +460,7 @@ void apagaEstado (quint_t *q, int e)
     {
       for(i = 0; i < SBUFF; i++)
         vet[i] = 0;
-      if(qfcont->ei == qfcont->ef)
+      /*if(qfcont->ei == qfcont->ef)
       {
         montaKleene(qfcont->s, kleene);
         busc = buscaTransicaoCabecaKleene(qfinal, qfcont->ei);
@@ -468,14 +468,14 @@ void apagaEstado (quint_t *q, int e)
         printf("\nTransicao criada: %s\n", vet);
         novoElementoDelta(&q->d, qicont->ei, vet, qfcont->ef);
         printf("Vou remover o ei = %d e o ef = %d, cujas transicoes sao si = %s e sf = %s\n", qicont->ei, qfcont->ef, qicont->s, qfcont->s);
-      }
-      else
-      {
-        montaTransicao(qicont->s, qfcont->s, vet);
-        printf("\ntranseicao criada: %s\n", vet);
-        novoElementoDelta(&q->d, qicont->ei, vet, qfcont->ef);
-        printf("Vou remover o ei = %d e o ef = %d, cujas transicoes sao si = %s e sf = %s\n", qicont->ei, qfcont->ef, qicont->s, qfcont->s);
-      }
+      } */
+      /*else
+      { */
+      montaTransicao(qicont->s, qfcont->s, vet);
+      printf("\ntranseicao criada: %s\n", vet);
+      novoElementoDelta(&q->d, qicont->ei, vet, qfcont->ef);
+      printf("Vou remover o ei = %d e o ef = %d, cujas transicoes sao si = %s e sf = %s\n", qicont->ei, qfcont->ef, qicont->s, qfcont->s);
+      /*} */
       qfcont = qfcont->prox;
     }
     qfcont = qfinal;
