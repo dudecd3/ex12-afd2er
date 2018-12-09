@@ -154,6 +154,7 @@ int main(int argc, char *argv[])
   encurtaEstadoKleene(&q, 2);
  /* encurtaEstadoE(&q, 1);
   imprimeQuintupla(q); */
+  imprimeQuintupla(q);
 
   /*ex12_init();  initialization function */
 
@@ -516,17 +517,43 @@ void encurtaEstadoKleene (quint_t *q, int e)
   {
     while(cont != NULL)
     {
+      if(cont->ei == e && cont->ef != e)
+      {
+        montaKleene(aux->s, kleene);
+        printf("\nkleene: %s\n", kleene);
+        montaTransicao(kleene, cont->s, vet);
+        printf("\nTransicao: %s\n", vet);
+        /* se tiver erro, ta aq */
+        busc = buscaDelta(q->d, aux->ei, aux->ef, aux->s);
+        if(busc != NULL)
+          removerDelta(&q->d, busc);
+        busc = buscaDelta(q->d, cont->ei, cont->ef, cont->s);
+        if(busc != NULL)
+          removerDelta(&q->d, busc);
+        insereComVetorNaFuncaoDelta(&q->d, cont->ei, vet, cont->ef);
+      }
+      cont = cont->prox;
+    }
+    cont = q->d;
+    aux = aux->prox;
+  }
+/*  aux = head;
+  cont = q->d;
+
+  while(aux != NULL)
+  {
+    while(cont != NULL)
+    {
       if(!(cont->ei == e && cont->ef == e))
       {
         montaKleene(aux->s, kleene);
         printf("\nkleene: %s\n", kleene);
         montaTransicao(kleene, cont->s, vet);
         printf("\nTransicao: %s\n", vet);
-        /*insereComVetorNaFuncaoDelta(&q->d, cont->ei, vet, cont->ef);
+        insereComVetorNaFuncaoDelta(&q->d, cont->ei, vet, cont->ef);
         busc = buscaDelta(q->d, cont->ei, cont->ef, cont->s);
         if(busc != NULL)
-          removerDelta(&q->d, busc); */
-        //modifica a transicao
+          removerDelta(&q->d, busc); 
       }
       cont = cont->prox;
     }
@@ -534,7 +561,7 @@ void encurtaEstadoKleene (quint_t *q, int e)
   }
   
   printf("\nTransicoes do estado %d que contem estrela de kleene:\n", e);
-  imprimeFuncaoDelta(head);
+  imprimeFuncaoDelta(head); */
   return;
 }
 void montaKleene(char kleene[SBUFF], char vet[SBUFF])
