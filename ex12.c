@@ -151,7 +151,10 @@ int main(int argc, char *argv[])
   imprimeQuintupla(q);
   //encurtaEstadoE(&q, 0);
   //imprimeQuintupla(q);
+  encurtaEstadoE(&q, 0);
+  imprimeQuintupla(q);
   encurtaEstadoKleene(&q, 1);
+  imprimeQuintupla(q);
   encurtaEstadoKleene(&q, 2);
  /* encurtaEstadoE(&q, 1);
   imprimeQuintupla(q); */
