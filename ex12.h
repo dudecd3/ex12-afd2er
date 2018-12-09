@@ -89,7 +89,7 @@ void imprimeListaDeEstadosFinais (quint_t q);
 void imprimeFuncaoDelta (delta_t *head);
 void criaEstadoInicial (quint_t *q);
 void criaEstadoFinal (quint_t *q);
-void apagaEstado (quint_t *q, int e);
+void encurtaEstadoE (quint_t *q, int e);
 delta_t *buscaDelta (delta_t *head, int ei, int ef, char vet[SBUFF]);
 ef_t *busca (ef_t *head, int f);
 void removerDelta(delta_t **head, delta_t *r);

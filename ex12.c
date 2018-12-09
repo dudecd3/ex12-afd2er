@@ -149,9 +149,9 @@ int main(int argc, char *argv[])
   criaEstadoInicial(&q);
   criaEstadoFinal(&q);
   imprimeQuintupla(q);
-  apagaEstado(&q, 0);
+  encurtaEstadoE(&q, 0);
   imprimeQuintupla(q);
- /* apagaEstado(&q, 1);
+ /* encurtaEstadoE(&q, 1);
   imprimeQuintupla(q); */
 
   /*ex12_init();  initialization function */
@@ -421,7 +421,7 @@ void criaEstadoFinal (quint_t *q)
 }
 
 /* ---------------------------------------------------------------------- */
-void apagaEstado (quint_t *q, int e)
+void encurtaEstadoE (quint_t *q, int e)
 {
   delta_t *qfinal = NULL;
   delta_t *qinicial = NULL;
