@@ -151,6 +151,7 @@ int main(int argc, char *argv[])
   imprimeQuintupla(q);
   //encurtaEstadoE(&q, 0);
   //imprimeQuintupla(q);
+  encurtaEstadoKleene(&q, 1);
   encurtaEstadoKleene(&q, 2);
  /* encurtaEstadoE(&q, 1);
   imprimeQuintupla(q); */
@@ -530,7 +531,8 @@ void encurtaEstadoKleene (quint_t *q, int e)
         busc = buscaDelta(q->d, cont->ei, cont->ef, cont->s);
         if(busc != NULL)
           removerDelta(&q->d, busc);
-        insereComVetorNaFuncaoDelta(&q->d, cont->ei, vet, cont->ef);
+        //insereComVetorNaFuncaoDelta(&q->d, cont->ei, vet, cont->ef);
+        insereComVetorNaFuncaoDelta(&q->d, e, vet, cont->ef);
       }
       cont = cont->prox;
     }
