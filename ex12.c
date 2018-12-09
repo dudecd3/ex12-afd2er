@@ -495,6 +495,15 @@ void encurtaEstadoE (quint_t *q, int e)
     
     qicont = qicont->prox;
   }
+  qicont = qinicial;
+  while(qicont != NULL)
+  {
+    busc = buscaDelta(q->d, qicont->ei, qicont->ef, qicont->s);
+    if(busc != NULL)
+      removerDelta(&q->d, busc);
+    qicont = qicont->prox;
+  }
+
   
   return;
 }
