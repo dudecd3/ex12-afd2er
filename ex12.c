@@ -587,6 +587,14 @@ void encurtaEstadoOU (quint_t *q, int e)
   delta_t *cont = q->d;
   delta_t *qinicial = NULL;
   delta_t *qfinal = NULL;
+  delta_t *qicont = NULL;
+  delta_t *qfcont = NULL;
+  delta_t *aux = NULL;
+  delta_t *busc = NULL;
+  delta_t *qacont = NULL;
+  delta_t *qtrans = NULL;
+  int st;
+  char vet[SBUFF];
 
   while(cont != NULL)
   {
@@ -600,6 +608,41 @@ void encurtaEstadoOU (quint_t *q, int e)
   imprimeFuncaoDelta(qinicial);
   printf("\n\n");
   imprimeFuncaoDelta(qfinal);
+
+  qicont = qinicial;
+  qfcont = qfinal;
+
+  while(qicont != NULL)
+  {
+    st = qicont->ef;
+    insereComVetorNaFuncaoDelta(&aux, qicont->ei, qicont->s, qicont->ef);
+    while(qfcont != NULL)
+    {
+      insereComVetorNaFuncaoDelta(&aux, qfcont->ei, qfcont->s, qfcont->ef);
+      busc = buscaDelta(qfcont, qfcont->ei, qfcont->s, qfcont->ef);
+      if(busc != NULL)
+        removerDelta(&qfcont, busc);
+      if(qfcont == NULL)
+        break;
+      qfcont = qfcont->prox;
+    }
+    qfcont = qfinal;
+    qicont = qicont->prox;
+  }
+
+  /*qacont = aux;
+
+  while(aux != NULL)
+  {
+    if(aux->ef == e)
+      insereComVetorNaFuncaoDelta(&qtrans, aux->ei, aux->s, aux->ef);
+    while(aux->ef == e)
+      aux = aux->prox;
+    if(aux->ei == e)
+      insereComVetorNaFuncaoDelta(&qtrans, aux->ei, aux->s, aux->ef);
+    aux = aux->prox;
+  } */
+  /* montar a transicao */
   return;
 }
 
