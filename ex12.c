@@ -446,6 +446,12 @@ void encurtaEstadoE (quint_t *q, int e)
       insereComVetorNaFuncaoDelta(&qfinal, cont->ei, cont->s, cont->ef);
     cont = cont->prox;
   }
+  if(qinicial->prox != NULL)
+  {
+    printf("\noutro inicial: ei = %d\n", qinicial->prox->ei);
+    encurtaEstadoE(q, qinicial->prox->ei);
+    return;
+  }
 
   qicont = qinicial;
   qfcont = qfinal;
