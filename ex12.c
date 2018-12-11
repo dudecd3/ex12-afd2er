@@ -155,6 +155,7 @@ int main(int argc, char *argv[])
   imprimeQuintupla(q);
   encurtaEstadoE(&q, 1);
   imprimeQuintupla(q);
+  encurtaEstadoOU(&q, 0);
 
   /*ex12_init();  initialization function */
 
@@ -583,6 +584,22 @@ void encurtaEstadoKleene (quint_t *q, int e)
 
 void encurtaEstadoOU (quint_t *q, int e)
 {
+  delta_t *cont = q->d;
+  delta_t *qinicial = NULL;
+  delta_t *qfinal = NULL;
+
+  while(cont != NULL)
+  {
+    if(cont->ef == e)
+      insereComVetorNaFuncaoDelta(&qinicial, cont->ei, cont->s, cont->ef);
+    if(cont->ei == e)
+      insereComVetorNaFuncaoDelta(&qfinal, cont->ei, cont->s, cont->ef);
+    cont = cont->prox;
+  }
+  printf("\n\n");
+  imprimeFuncaoDelta(qinicial);
+  printf("\n\n");
+  imprimeFuncaoDelta(qfinal);
   return;
 }
 
