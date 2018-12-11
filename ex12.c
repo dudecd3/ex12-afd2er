@@ -149,15 +149,11 @@ int main(int argc, char *argv[])
   criaEstadoInicial(&q);
   criaEstadoFinal(&q);
   imprimeQuintupla(q);
-  //encurtaEstadoE(&q, 0);
-  //imprimeQuintupla(q);
-  encurtaEstadoE(&q, 0);
-  imprimeQuintupla(q);
   encurtaEstadoKleene(&q, 1);
   imprimeQuintupla(q);
   encurtaEstadoKleene(&q, 2);
- /* encurtaEstadoE(&q, 1);
-  imprimeQuintupla(q); */
+  imprimeQuintupla(q);
+  encurtaEstadoE(&q, 1);
   imprimeQuintupla(q);
 
   /*ex12_init();  initialization function */
