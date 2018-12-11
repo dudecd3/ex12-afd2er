@@ -580,6 +580,12 @@ void encurtaEstadoKleene (quint_t *q, int e)
   imprimeFuncaoDelta(head); */
   return;
 }
+
+void encurtaEstadoOU (quint_t *q, int e)
+{
+  return;
+}
+
 void montaKleene(char kleene[SBUFF], char vet[SBUFF])
 {
   char vetor[SBUFF];

@@ -101,4 +101,5 @@ delta_t *buscaTransicaoCabecaKleene (delta_t *head, int e);
 void montaKleene(char kleene[SBUFF], char vet[SBUFF]);
 void montaTransicaoKleene(delta_t *d, char kleene[SBUFF], char vet[SBUFF]);
 void encurtaEstadoKleene (quint_t *q, int e);
+void encurtaEstadoOU (quint_t *q, int e);
 
