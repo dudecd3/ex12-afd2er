@@ -630,6 +630,8 @@ void encurtaEstadoOU (quint_t *q, int e)
     qicont = qicont->prox;
   }
 
+  /* ate aqui ta ok */
+
   /*qacont = aux;
 
   while(aux != NULL)
