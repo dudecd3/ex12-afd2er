@@ -138,6 +138,7 @@ int main(int argc, char *argv[])
   int opt; /* return from getopt() */
   FILE *arq = NULL;
   quint_t q;
+  int i = 0;
 
   arq = fopen("01-entrada.txt", "r");
   if(arq == NULL)
@@ -149,13 +150,19 @@ int main(int argc, char *argv[])
   criaEstadoInicial(&q);
   criaEstadoFinal(&q);
   imprimeQuintupla(q);
-  encurtaEstadoKleene(&q, 1);
+  /*encurtaEstadoKleene(&q, 1);
   imprimeQuintupla(q);
   encurtaEstadoKleene(&q, 2);
   imprimeQuintupla(q);
   encurtaEstadoE(&q, 1);
   imprimeQuintupla(q);
-  encurtaEstadoOU(&q, 0);
+  encurtaEstadoOU(&q, 0); */
+
+  while(q->d->prox != NULL)
+  {
+    for(i = 0; i < q.k; i++)
+      encurtaEstado(&q, i);
+  }
 
   /*ex12_init();  initialization function */
 
