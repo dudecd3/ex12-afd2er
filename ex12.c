@@ -426,13 +426,37 @@ void criaEstadoFinal (quint_t *q)
 void encurtaEstado (quint_t *q, int e)
 {
   delta_t *cont = q->d;
-  delta_t *ant = NULL;
+  delta_t *aux = NULL;
 
+  /* condicao para chamar a funcao de encurtar pela estrela de kleene */
+  /* chama so a funcao de encurtar estrelas de kleene ate que nao haja mais nenhuma */
   while(cont != NULL)
   {
     if(cont->ei == e && cont->ef == e)
+    {
       encurtaEstadoKleene(q, e);
-    ant = cont;
+      break;
+    }
+    cont = cont->prox;
+  }
+  cont = q->d;
+  aux = q->d;
+
+  /* Depois de encurtar as estrelas de kleene, encurta os 'E' */
+  while(cont != NULL)
+  {
+    if(cont->ef == e)
+    {
+      while(aux != NULL)
+      {
+        if(cont->ei == e)
+        {
+          encurtaEstadoE(q, e);
+          break;
+        }
+        aux = aux->prox;
+      }
+    }
     cont = cont->prox;
   }
   return;
