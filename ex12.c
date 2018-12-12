@@ -727,6 +727,13 @@ void montaOU(char trans1[SBUFF], char trans2[SBUFF], char vet[SBUFF])
     while(trans1[j] != '\0')
     {
         vetor[i+j] = trans1[j];
+        
+        if(trans1[1+j] != '\0') /* caso haja mais um caracter */
+        {
+            vetor[2+j] = '.';
+            i++;
+        }
+
         j++;
     }
 
