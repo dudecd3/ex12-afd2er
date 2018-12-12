@@ -139,7 +139,6 @@ int main(int argc, char *argv[])
   FILE *arq = NULL;
   quint_t q;
 /*  int i = 0; */
-  char vetor[SBUFF];
   arq = fopen("01-entrada.txt", "r");
   if(arq == NULL)
   {
@@ -157,10 +156,6 @@ int main(int argc, char *argv[])
   encurtaEstadoE(&q, 1);
   imprimeQuintupla(q);
   encurtaEstadoOU(&q, 0); 
-  
-  printf("\n\n");
-  montaOU("a.b","E.a.(a)*.(b)*",vetor);
-  printf("%s",vetor);
   
   /*while(q.d->prox != NULL)
   {
