@@ -138,7 +138,7 @@ int main(int argc, char *argv[])
   int opt; /* return from getopt() */
   FILE *arq = NULL;
   quint_t q;
-  int i = 0;
+/*  int i = 0; */
 
   arq = fopen("01-entrada.txt", "r");
   if(arq == NULL)
@@ -667,7 +667,7 @@ void encurtaEstadoOU (quint_t *q, int e)
     while(qfcont != NULL)
     {
       insereComVetorNaFuncaoDelta(&aux, qfcont->ei, qfcont->s, qfcont->ef);
-      busc = buscaDelta(qfcont, qfcont->ei, qfcont->s, qfcont->ef);
+      busc = buscaDelta(qfcont, qfcont->ei, qfcont->ef, qfcont->s);
       if(busc != NULL)
         removerDelta(&qfcont, busc);
       if(qfcont == NULL)
