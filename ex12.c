@@ -692,6 +692,8 @@ void encurtaEstadoOU (quint_t *q, int e)
     aux = aux->prox;
   } */
   /* montar a transicao */
+
+  //montaOU(..., ..., vet);
   return;
 }
 
