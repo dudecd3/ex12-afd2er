@@ -425,6 +425,16 @@ void criaEstadoFinal (quint_t *q)
 
 void encurtaEstado (quint_t *q, int e)
 {
+  delta_t *cont = q->d;
+  delta_t *ant = NULL;
+
+  while(cont != NULL)
+  {
+    if(cont->ei == e && cont->ef == e)
+      encurtaEstadoKleene(q, e);
+    ant = cont;
+    cont = cont->prox;
+  }
   return;
 }
 
