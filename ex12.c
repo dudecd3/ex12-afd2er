@@ -716,6 +716,22 @@ void montaKleene(char kleene[SBUFF], char vet[SBUFF])
   return;
 }
 
+void montaOU(char trans1[SBUFF], char trans2[SBUFF], char vet[SBUFF])
+{
+    char vetor[SBUFF];
+    int i=1, j=0;
+
+    vetor[0] = '(';
+  
+    while(trans1[j] != '\0')
+    {
+        vetor[i+j] = trans1[j];
+        j++;
+    }
+
+    vetor[i+j] = '|';
+}
+
 void montaTransicaoKleene(delta_t *d, char kleene[SBUFF], char vet[SBUFF])
 {
   char vetor[SBUFF];
