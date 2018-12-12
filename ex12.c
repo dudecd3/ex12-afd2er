@@ -150,19 +150,21 @@ int main(int argc, char *argv[])
   criaEstadoInicial(&q);
   criaEstadoFinal(&q);
   imprimeQuintupla(q);
-  /*encurtaEstadoKleene(&q, 1);
+  encurtaEstadoKleene(&q, 1);
   imprimeQuintupla(q);
   encurtaEstadoKleene(&q, 2);
   imprimeQuintupla(q);
   encurtaEstadoE(&q, 1);
   imprimeQuintupla(q);
-  encurtaEstadoOU(&q, 0); */
+  encurtaEstadoOU(&q, 0); 
 
-  while(q->d->prox != NULL)
+  /*while(q.d->prox != NULL)
   {
     for(i = 0; i < q.k; i++)
       encurtaEstado(&q, i);
-  }
+    printf("\n\n");
+    imprimeFuncaoDelta(q.d);
+  } */
 
   /*ex12_init();  initialization function */
 
