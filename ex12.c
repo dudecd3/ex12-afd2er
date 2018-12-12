@@ -139,6 +139,7 @@ int main(int argc, char *argv[])
   FILE *arq = NULL;
   quint_t q;
 /*  int i = 0; */
+  char vetor[SBUFF];
   arq = fopen("01-entrada.txt", "r");
   if(arq == NULL)
   {
@@ -156,7 +157,7 @@ int main(int argc, char *argv[])
   encurtaEstadoE(&q, 1);
   imprimeQuintupla(q);
   encurtaEstadoOU(&q, 0); 
-  
+
   /*while(q.d->prox != NULL)
   {
     for(i = 0; i < q.k; i++)
@@ -727,13 +728,6 @@ void montaOU(char trans1[SBUFF], char trans2[SBUFF], char vet[SBUFF])
     while(trans1[j] != '\0')
     {
         vetor[i+j] = trans1[j];
-        
-        if(trans1[1+j] != '\0') /* caso haja mais um caracter */
-        {
-            vetor[2+j] = '.';
-            i++;
-        }
-
         j++;
     }
 
@@ -747,7 +741,8 @@ void montaOU(char trans1[SBUFF], char trans2[SBUFF], char vet[SBUFF])
     }
     
     vetor[i+j+k] = ')';
-
+    vetor[i+j+k+1] = '\0';
+    
     strcpy(vet, vetor);
     return;
 }
