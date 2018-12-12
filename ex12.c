@@ -423,6 +423,11 @@ void criaEstadoFinal (quint_t *q)
   return;
 }
 
+void encurtaEstado (quint_t *q, int e)
+{
+  return;
+}
+
 /* ---------------------------------------------------------------------- */
 void encurtaEstadoE (quint_t *q, int e)
 {
