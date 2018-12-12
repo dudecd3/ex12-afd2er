@@ -719,7 +719,7 @@ void montaKleene(char kleene[SBUFF], char vet[SBUFF])
 void montaOU(char trans1[SBUFF], char trans2[SBUFF], char vet[SBUFF])
 {
     char vetor[SBUFF];
-    int i=1, j=0;
+    int i=1, j=0, k=0;
 
     vetor[0] = '(';
   
@@ -730,6 +730,18 @@ void montaOU(char trans1[SBUFF], char trans2[SBUFF], char vet[SBUFF])
     }
 
     vetor[i+j] = '|';
+    j++;
+
+    while(trans2[k] != '\0')
+    {
+        vetor[i+j+k] = trans2[k];
+        k++;
+    }
+    
+    vetor[i+j+k] = ')';
+
+    strcpy(vet, vetor);
+    return;
 }
 
 void montaTransicaoKleene(delta_t *d, char kleene[SBUFF], char vet[SBUFF])
