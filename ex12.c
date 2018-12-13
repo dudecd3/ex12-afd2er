@@ -229,7 +229,7 @@ void converte (quint_t *q, char vet[SBUFF])
   int j = 0;
 
   strcpy(vetor, q->d->s);
-  while(vetor[i] != '\0')
+  do
   {
     if(vetor[i] != 'E')
     {
@@ -237,9 +237,9 @@ void converte (quint_t *q, char vet[SBUFF])
       j++;
     }
     i++;
-  }
-  sai[j+1] = '\0';
-  strcpy(vet, sai);
+  }while(vetor[i] != '\0');
+  sai[j]='\0';
+  strcat(vet, sai);
 
   return;
 }
