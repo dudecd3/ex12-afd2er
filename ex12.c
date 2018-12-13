@@ -139,7 +139,6 @@ int main(int argc, char *argv[])
   FILE *arq = NULL;
   quint_t q;
 /*  int i = 0; */
-  char vetor[SBUFF];
   arq = fopen("01-entrada.txt", "r");
   if(arq == NULL)
   {
@@ -616,8 +615,6 @@ void encurtaEstadoOU (quint_t *q, int e)
   delta_t *qinicial = NULL;
   char vet[SBUFF];
   delta_t *busc = NULL;
-  int ei;
-  int ef;
   delta_t *apagar = NULL;
 
   while(cont != NULL)
