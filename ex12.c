@@ -579,6 +579,8 @@ void encurtaEstadoKleene (quint_t *q, int e)
       insereComVetorNaFuncaoDelta(&head, cont->ei, cont->s, cont->ef);
     cont = cont->prox;
   }
+  if(head == NULL)
+    return;
   aux = head;
   cont = q->d;
 
@@ -607,31 +609,6 @@ void encurtaEstadoKleene (quint_t *q, int e)
     cont = q->d;
     aux = aux->prox;
   }
-/*  aux = head;
-  cont = q->d;
-
-  while(aux != NULL)
-  {
-    while(cont != NULL)
-    {
-      if(!(cont->ei == e && cont->ef == e))
-      {
-        montaKleene(aux->s, kleene);
-        printf("\nkleene: %s\n", kleene);
-        montaTransicao(kleene, cont->s, vet);
-        printf("\nTransicao: %s\n", vet);
-        insereComVetorNaFuncaoDelta(&q->d, cont->ei, vet, cont->ef);
-        busc = buscaDelta(q->d, cont->ei, cont->ef, cont->s);
-        if(busc != NULL)
-          removerDelta(&q->d, busc); 
-      }
-      cont = cont->prox;
-    }
-    aux = aux->prox;
-  }
-  
-  printf("\nTransicoes do estado %d que contem estrela de kleene:\n", e);
-  imprimeFuncaoDelta(head); */
   return;
 }
 
