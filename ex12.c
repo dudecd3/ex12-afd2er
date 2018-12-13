@@ -137,6 +137,7 @@ int main(int argc, char *argv[])
 {
   int opt; /* return from getopt() */
   FILE *arq = NULL;
+  char er[SBUFF];
   quint_t q;
 /*  int i = 0; */
   arq = fopen("01-entrada.txt", "r");
@@ -169,6 +170,8 @@ int main(int argc, char *argv[])
   imprimeQuintupla(q);
   encurtaEstadoE(&q, 1);
   imprimeQuintupla(q); */
+
+  
   
   /*while(q.d->prox != NULL)
   {
@@ -213,6 +216,8 @@ int main(int argc, char *argv[])
 }
 
 /* ---------------------------------------------------------------------- */
+void converte (quint_t q, char vet[SBUFF])
+
 void pegaEntrada (quint_t *q, FILE *arq)
 {
   /* as variaveis que comecam com p irao apenas guardar momentaneamente os dados */
@@ -494,7 +499,6 @@ void novo (quint_t *q, int e)
   delta_t *apagarF = NULL;
   delta_t *busc = NULL;
   int ci = 0;
-  int cf = 0;
   char vet[SBUFF];
 
   while(cont != NULL)
@@ -514,13 +518,17 @@ void novo (quint_t *q, int e)
     cont = cont->prox;
   }
 
-  ci = contaNodoDelta(qinicial);
-  cf = contaNodoDelta(qfinal);
+  /*ci = contaNodoDelta(qinicial);
+  cf = contaNodoDelta(qfinal); */
   /*if(ci == 1 && cf == 1)
   {
+    montaTransicao(qinicial->s, qfinal->s, vet);
+    arq = fopen("sex16.txt", "w");
+    fwrite(vet, sizeof(char), sizeof(vet), arq);
+    fclose(arq);
     printf("entrei na final E");
-    finalE(q, e);
-    return;
+    finalE(q, e); 
+    return; 
   } */
 
   if(ci > 1)

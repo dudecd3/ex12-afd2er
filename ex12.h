@@ -42,7 +42,7 @@
 #define IFDEBUG(M) if(DEBUG) fprintf(stderr, "[DEBUG file:%s line:%d]: " M "\n", __FILE__, __LINE__); else {;}
 
 /* limits */
-#define SBUFF 20 /**< String buffer */
+#define SBUFF 50 /**< String buffer */
 #define ZERO_EM_ASCII 48
 
 /* ---------------------------------------------------------------------- */
