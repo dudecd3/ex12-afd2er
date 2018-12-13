@@ -139,6 +139,7 @@ int main(int argc, char *argv[])
   FILE *arq = NULL;
   quint_t q;
 /*  int i = 0; */
+  char vetor[SBUFF];
   arq = fopen("01-entrada.txt", "r");
   if(arq == NULL)
   {
@@ -730,7 +731,8 @@ void montaOU(char trans1[SBUFF], char trans2[SBUFF], char vet[SBUFF])
     }
     
     vetor[i+j+k] = ')';
-
+    vetor[i+j+k+1] = '\0';
+    
     strcpy(vet, vetor);
     return;
 }
