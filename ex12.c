@@ -149,10 +149,18 @@ int main(int argc, char *argv[])
   pegaEntrada(&q, arq);
   criaEstadoInicial(&q);
   criaEstadoFinal(&q);
-  //imprimeQuintupla(q);
-  //encurtaEstadoKleene(&q, 1);
-  //encurtaEstadoKleene(&q, 2);
   imprimeQuintupla(q);
+  encurtaEstadoKleene(&q, 1);
+  encurtaEstadoKleene(&q, 2);
+  imprimeQuintupla(q);
+  encurtaEstadoE(&q, 0);
+  imprimeQuintupla(q);
+  encurtaEstadoE(&q, 1);
+  imprimeQuintupla(q);
+  encurtaEstadoE(&q, 2);
+  imprimeQuintupla(q);
+  converte(&q, er);
+  printf("%s\n", er);
  /* encurtaEstadoKleene(&q, 1);
   imprimeQuintupla(q);
   encurtaEstadoKleene(&q, 2);
@@ -166,11 +174,11 @@ int main(int argc, char *argv[])
   novo(&q, 1);
   imprimeQuintupla(q);
   converte(&q, er);
-  printf("%s\n", er);
+  printf("%s\n", er); */
   arq = fopen("sex16.txt", "w");
   fprintf(arq, "%s", er);
   fclose(arq);
-  encurtaEstadoE(&q, 1);
+  /*encurtaEstadoE(&q, 1);
   imprimeQuintupla(q);
   encurtaEstadoE(&q, 1);
   imprimeQuintupla(q);
