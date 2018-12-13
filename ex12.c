@@ -152,7 +152,7 @@ int main(int argc, char *argv[])
   imprimeQuintupla(q);
   encurtaEstadoKleene(&q, 1);
   imprimeQuintupla(q);
-  encurtaEstadoKleene(&q, 2);
+ /* encurtaEstadoKleene(&q, 2);
   imprimeQuintupla(q);
   encurtaEstadoE(&q, 1);
   imprimeQuintupla(q);
@@ -160,7 +160,7 @@ int main(int argc, char *argv[])
   imprimeQuintupla(q);
   encurtaEstadoOU(&q, 1);  
   imprimeQuintupla(q);
- /* encurtaEstadoE(&q, 1);
+  encurtaEstadoE(&q, 1);
   imprimeQuintupla(q); */
   
   /*while(q.d->prox != NULL)
@@ -594,14 +594,12 @@ void encurtaEstadoKleene (quint_t *q, int e)
         printf("\nkleene: %s\n", kleene);
         montaTransicao(kleene, cont->s, vet);
         printf("\nTransicao: %s\n", vet);
-        /* se tiver erro, ta aq */
         busc = buscaDelta(q->d, aux->ei, aux->ef, aux->s);
         if(busc != NULL)
           removerDelta(&q->d, busc);
         busc = buscaDelta(q->d, cont->ei, cont->ef, cont->s);
         if(busc != NULL)
           removerDelta(&q->d, busc);
-        //insereComVetorNaFuncaoDelta(&q->d, cont->ei, vet, cont->ef);
         insereComVetorNaFuncaoDelta(&q->d, e, vet, cont->ef);
       }
       cont = cont->prox;
