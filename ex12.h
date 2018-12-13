@@ -107,4 +107,5 @@ void encurtaEstado (quint_t *q, int e);
 int contaNodoDelta (delta_t *d);
 void novo (quint_t *q, int e);
 void finalE (quint_t *q, int e);
+void converte (quint_t *q, char vet[SBUFF]);
 

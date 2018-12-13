@@ -162,6 +162,11 @@ int main(int argc, char *argv[])
   imprimeQuintupla(q);
   novo(&q, 1);
   imprimeQuintupla(q);
+  converte(&q, er);
+  printf("%s\n", er);
+  arq = fopen("sex16.txt", "w");
+  fprintf(arq, "%s", er);
+  fclose(arq);
  /* encurtaEstadoE(&q, 1);
   imprimeQuintupla(q);
   encurtaEstadoE(&q, 1);
@@ -216,7 +221,28 @@ int main(int argc, char *argv[])
 }
 
 /* ---------------------------------------------------------------------- */
-void converte (quint_t q, char vet[SBUFF])
+void converte (quint_t *q, char vet[SBUFF])
+{
+  char vetor[SBUFF];
+  char sai[SBUFF];
+  int i = 0;
+  int j = 0;
+
+  strcpy(vetor, q->d->s);
+  while(vetor[i] != '\0')
+  {
+    if(vetor[i] != 'E')
+    {
+      sai[j] = vetor[i];
+      j++;
+    }
+    i++;
+  }
+  sai[j+1] = '\0';
+  strcpy(vet, sai);
+
+  return;
+}
 
 void pegaEntrada (quint_t *q, FILE *arq)
 {
