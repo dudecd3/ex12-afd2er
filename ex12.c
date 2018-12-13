@@ -153,6 +153,14 @@ int main(int argc, char *argv[])
   imprimeQuintupla(q);
   encurtaEstadoKleene(&q, 2);
   imprimeQuintupla(q);
+  novo(&q, 0);
+  imprimeQuintupla(q);
+  novo(&q, 2);
+  imprimeQuintupla(q);
+  encurtaEstadoOU(&q, 1);  
+  imprimeQuintupla(q);
+  novo(&q, 1);
+  imprimeQuintupla(q);
  /* encurtaEstadoE(&q, 1);
   imprimeQuintupla(q);
   encurtaEstadoE(&q, 1);
@@ -476,6 +484,112 @@ void encurtaEstado (quint_t *q, int e)
 }
 
 /* ---------------------------------------------------------------------- */
+
+void novo (quint_t *q, int e)
+{
+  delta_t *cont = q->d;
+  delta_t *qinicial = NULL;
+  delta_t *qfinal = NULL;
+  delta_t *apagarI = NULL;
+  delta_t *apagarF = NULL;
+  delta_t *busc = NULL;
+  int ci = 0;
+  int cf = 0;
+  char vet[SBUFF];
+
+  while(cont != NULL)
+  {
+    if(cont->ei == e && cont->ef == e)
+      return;
+    if(cont->ef == e)
+    {
+      insereComVetorNaFuncaoDelta(&qinicial, cont->ei, cont->s, cont->ef);
+      insereComVetorNaFuncaoDelta(&apagarI, cont->ei, cont->s, cont->ef);
+    }
+    if(cont->ei == e)
+    {
+      insereComVetorNaFuncaoDelta(&qfinal, cont->ei, cont->s, cont->ef);
+      insereComVetorNaFuncaoDelta(&apagarF, cont->ei, cont->s, cont->ef);
+    }
+    cont = cont->prox;
+  }
+
+  ci = contaNodoDelta(qinicial);
+  cf = contaNodoDelta(qfinal);
+  /*if(ci == 1 && cf == 1)
+  {
+    printf("entrei na final E");
+    finalE(q, e);
+    return;
+  } */
+
+  if(ci > 1)
+    return;
+
+  while(qinicial != NULL)
+  {
+    while(qfinal != NULL)
+    {
+      montaTransicao(qinicial->s, qfinal->s, vet);
+      insereComVetorNaFuncaoDelta(&q->d, qinicial->ei, vet, qfinal->ef);
+      qfinal = qfinal->prox;
+    }
+    qinicial = qinicial->prox;
+  }
+
+  while(apagarI != NULL)
+  {
+    busc = buscaDelta(q->d, apagarI->ei, apagarI->ef, apagarI->s);
+    if(busc != NULL)
+      removerDelta(&q->d, busc);
+    else
+      printf("\nErro ao apagar inicial\n");
+    apagarI = apagarI->prox;
+  }
+  while(apagarF != NULL)
+  {
+    busc = buscaDelta(q->d, apagarF->ei, apagarF->ef, apagarF->s);
+    if(busc != NULL)
+      removerDelta(&q->d, busc);
+    else
+      printf("\nErro ao apagar final\n");
+    apagarF = apagarF->prox;
+  }
+  /*printf("ci = %d\n", ci); */
+
+  /*printf("qinicial\n");
+  imprimeFuncaoDelta(qinicial);
+  printf("qfinal\n");
+  imprimeFuncaoDelta(qfinal); */
+  return;
+}
+
+void finalE (quint_t *q, int e)
+{
+  delta_t *cont = q->d;
+  delta_t *inicial = NULL;
+  delta_t *final = NULL;
+  delta_t *novo = NULL;
+  char vet[SBUFF];
+
+  while(cont != NULL)
+  {
+    if(cont->ef == e)
+      insereComVetorNaFuncaoDelta(&inicial, cont->ei, cont->s, cont->ef);
+    if(cont->ei == e)
+      insereComVetorNaFuncaoDelta(&final, cont->ei, cont->s, cont->ef);
+    cont = cont->prox;
+  }
+
+  montaTransicao(inicial->s, final->s, vet);
+  insereComVetorNaFuncaoDelta(&novo, inicial->ei, vet, final->ef);
+  printf("\n\n");
+  imprimeFuncaoDelta(novo);
+  printf("\n\n");
+  q->d = novo;
+  
+  return;
+}
 void encurtaEstadoE (quint_t *q, int e)
 {
   delta_t *qfinal = NULL;

@@ -105,4 +105,6 @@ void encurtaEstadoKleene (quint_t *q, int e);
 void encurtaEstadoOU (quint_t *q, int e);
 void encurtaEstado (quint_t *q, int e);
 int contaNodoDelta (delta_t *d);
+void novo (quint_t *q, int e);
+void finalE (quint_t *q, int e);
 
