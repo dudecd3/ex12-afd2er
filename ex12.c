@@ -140,7 +140,7 @@ int main(int argc, char *argv[])
   char er[SBUFF];
   quint_t q;
 /*  int i = 0; */
-  arq = fopen("01-entrada.txt", "r");
+  arq = fopen("s11.txt", "r");
   if(arq == NULL)
   {
     printf("Erro ao abrir arquivo\n");
@@ -149,8 +149,11 @@ int main(int argc, char *argv[])
   pegaEntrada(&q, arq);
   criaEstadoInicial(&q);
   criaEstadoFinal(&q);
+  //imprimeQuintupla(q);
+  //encurtaEstadoKleene(&q, 1);
+  //encurtaEstadoKleene(&q, 2);
   imprimeQuintupla(q);
-  encurtaEstadoKleene(&q, 1);
+ /* encurtaEstadoKleene(&q, 1);
   imprimeQuintupla(q);
   encurtaEstadoKleene(&q, 2);
   imprimeQuintupla(q);
@@ -167,7 +170,7 @@ int main(int argc, char *argv[])
   arq = fopen("sex16.txt", "w");
   fprintf(arq, "%s", er);
   fclose(arq);
- /* encurtaEstadoE(&q, 1);
+  encurtaEstadoE(&q, 1);
   imprimeQuintupla(q);
   encurtaEstadoE(&q, 1);
   imprimeQuintupla(q);
@@ -449,7 +452,7 @@ void imprimeFuncaoDelta (delta_t *head)
 /* ---------------------------------------------------------------------- */
 void criaEstadoInicial (quint_t *q)
 {
-  insereNaFuncaoDelta(&q->d, q->k, 'E', q->s0);
+  insereNaFuncaoDelta(&q->d, q->k+1, 'E', q->s0);
   q->s0 = q->k;
 
   return;
@@ -461,7 +464,7 @@ void criaEstadoFinal (quint_t *q)
   ef_t *cont = q->f;
   ef_t *b = NULL;
 
-  insereNosEstadosFinais(&q->f, (q->k+1));
+  insereNosEstadosFinais(&q->f, (q->k+2));
 
   while(cont->prox != NULL)
     cont = cont->prox;
