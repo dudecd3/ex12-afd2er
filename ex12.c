@@ -157,7 +157,10 @@ int main(int argc, char *argv[])
   imprimeQuintupla(q);
   encurtaEstadoE(&q, 1);
   imprimeQuintupla(q);
-  encurtaEstadoOU(&q, 1); 
+  encurtaEstadoOU(&q, 1);  
+  imprimeQuintupla(q);
+ /* encurtaEstadoE(&q, 1);
+  imprimeQuintupla(q); */
   
   /*while(q.d->prox != NULL)
   {
@@ -635,126 +638,52 @@ void encurtaEstadoOU (quint_t *q, int e)
 {
   delta_t *cont = q->d;
   delta_t *qinicial = NULL;
-  delta_t *qfinal = NULL;
-  delta_t *qicont = NULL;
-  delta_t *qfcont = NULL;
-  delta_t *aux = NULL;
-  delta_t *busc = NULL;
-  delta_t *qacont = NULL;
-  delta_t *qtrans = NULL;
-  int st;
   char vet[SBUFF];
+  delta_t *busc = NULL;
+  int ei;
+  int ef;
+  delta_t *apagar = NULL;
 
   while(cont != NULL)
   {
     if(cont->ef == e)
+    {
       insereComVetorNaFuncaoDelta(&qinicial, cont->ei, cont->s, cont->ef);
-    if(cont->ei == e)
-      insereComVetorNaFuncaoDelta(&qfinal, cont->ei, cont->s, cont->ef);
+      insereComVetorNaFuncaoDelta(&apagar, cont->ei, cont->s, cont->ef);
+    }
     cont = cont->prox;
   }
-  printf("\n\n");
-  imprimeFuncaoDelta(qinicial);
-  printf("\n\n");
-  imprimeFuncaoDelta(qfinal);
 
-  qicont = qinicial;
-  qfcont = qfinal;
+  montaOU(qinicial->s, qinicial->prox->s, vet);
+  printf("transicao montada: %s\n", vet);
+  cont = qinicial;
 
-  /*while(qicont != NULL)
+  insereComVetorNaFuncaoDelta(&cont, cont->ei, vet, cont->ef);
+  //printf("delta cont atual\n");
+  //imprimeFuncaoDelta(cont);
+
+  removerDelta(&cont, cont);
+  removerDelta(&cont, cont);
+
+  printf("delta cont atual\n");
+  imprimeFuncaoDelta(cont); 
+  /*printf("\n\ndelta qinicial\n");
+  imprimeFuncaoDelta(qinicial); */
+  printf("transicoes a apagar\n");
+  imprimeFuncaoDelta(apagar);
+
+  while(apagar != NULL)
   {
-    st = qicont->ef;
-    insereComVetorNaFuncaoDelta(&aux, qicont->ei, qicont->s, qicont->ef);
-    while(qfcont != NULL)
-    {
-      insereComVetorNaFuncaoDelta(&aux, qfcont->ei, qfcont->s, qfcont->ef);
-      busc = buscaDelta(qfcont, qfcont->ei, qfcont->ef, qfcont->s);
-      if(busc != NULL)
-        removerDelta(&qfcont, busc);
-      if(qfcont == NULL)
-        break;
-      qfcont = qfcont->prox;
-    }
-    qfcont = qfinal;
-    qicont = qicont->prox;
-  } */
-
-
-  /* ate aqui ta ok */
-
-  if(qfinal == NULL)
-  {
-    /*montaOU(qinicial->s, qinicial->prox->s, vet);
-    insereComVetorNaFuncaoDelta(&q->d, qinicial->ei, vet, qinicial->ef);
-    busc = buscaDelta(q->d, qinicial->ei, qinicial->ef, qinicial->s);
+    busc = buscaDelta(q->d, apagar->ei, apagar->ef, apagar->s);
     if(busc != NULL)
       removerDelta(&q->d, busc);
-    busc = buscaDelta(q->d, qinicial->prox->ei, qinicial->prox->ef, qinicial->prox->s);
-    if(busc != NULL)
-      removerDelta(&q->d, busc);
-    printf("\ntransicao OU: %s\n", vet); */
+    else
+      printf("erro ao remover\n");
+    apagar = apagar->prox;
   }
+  printf("\n\n\n");
+  insereComVetorNaFuncaoDelta(&q->d, cont->ei, vet, cont->ef);
 
-  else
-  {
-    qicont = qinicial;
-    while(qinicial->prox != NULL)
-    {
-      montaOU(qinicial->s, qinicial->prox->s, vet);
-    //  insereComVetorNaFuncaoDelta(&q->d, qinicial->ei, vet, qinicial->ef);
-      insereComVetorNaFuncaoDelta(&qinicial, qinicial->ei, vet, qinicial->ef);
-      printf("\ntransicao OU: %s\n", vet);
-    /*  busc = buscaDelta(q->d, qinicial->ei, qinicial->ef, qinicial->s);
-      if(busc != NULL)
-        removerDelta(&q->d, busc); */
-      busc = buscaDelta(qinicial, qinicial->ei, qinicial->ef, qinicial->s);
-      if(busc != NULL)
-      {
-        removerDelta(&qinicial, busc);
-      }
-      else
-        printf("nao consegui remover\n");
-     /* busc = buscaDelta(q->d, qinicial->prox->ei, qinicial->prox->ef, qinicial->prox->s);
-      if(busc != NULL)
-        removerDelta(&q->d, busc); */
-      busc = buscaDelta(qinicial, qinicial->prox->ei, qinicial->prox->ef, qinicial->prox->s);
-      if(busc != NULL)
-      {
-        removerDelta(&qinicial, busc);
-      }
-      else
-        printf("nao consegui remover\n");
-      printf("\n\n\n");
-      imprimeFuncaoDelta(qinicial);
-      break;
-    }
-  }
-  printf("%s\n", qinicial->s);
-  if(qinicial->prox == NULL)
-    printf("fim do laco\n");
-  else
-  {
-    printf("%s\n", qinicial->prox->s);
-    if(qinicial->prox->prox == NULL)
-      printf("fim do laco na 2ª instancia\n");
-  }
-  printf("\n");
-  imprimeFuncaoDelta(qinicial);
-  /*qacont = aux;
-
-  while(aux != NULL)
-  {
-    if(aux->ef == e)
-      insereComVetorNaFuncaoDelta(&qtrans, aux->ei, aux->s, aux->ef);
-    while(aux->ef == e)
-      aux = aux->prox;
-    if(aux->ei == e)
-      insereComVetorNaFuncaoDelta(&qtrans, aux->ei, aux->s, aux->ef);
-    aux = aux->prox;
-  } */
-  /* montar a transicao */
-
-  //montaOU(..., ..., vet);
   return;
 }
 
@@ -843,6 +772,8 @@ delta_t *buscaDelta (delta_t *head, int ei, int ef, char vet[SBUFF])
 
   return NULL;
 }
+
+/* ---------------------------------------------------------------------- */
 
 /* ---------------------------------------------------------------------- */
 
