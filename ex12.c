@@ -151,9 +151,9 @@ int main(int argc, char *argv[])
   imprimeQuintupla(q);
   encurtaEstadoKleene(&q, 1);
   imprimeQuintupla(q);
- /* encurtaEstadoKleene(&q, 2);
+  encurtaEstadoKleene(&q, 2);
   imprimeQuintupla(q);
-  encurtaEstadoE(&q, 1);
+ /* encurtaEstadoE(&q, 1);
   imprimeQuintupla(q);
   encurtaEstadoE(&q, 1);
   imprimeQuintupla(q);
@@ -561,6 +561,20 @@ void encurtaEstadoE (quint_t *q, int e)
 
   
   return;
+}
+
+int contaNodoDelta (delta_t *d)
+{
+  delta_t *cont = d;
+  int i = 0;
+
+  while(cont != NULL)
+  {
+    i++;
+    cont = cont->prox;
+  }
+
+  return i;
 }
 
 void encurtaEstadoKleene (quint_t *q, int e)

@@ -104,4 +104,5 @@ void montaTransicaoKleene(delta_t *d, char kleene[SBUFF], char vet[SBUFF]);
 void encurtaEstadoKleene (quint_t *q, int e);
 void encurtaEstadoOU (quint_t *q, int e);
 void encurtaEstado (quint_t *q, int e);
+int contaNodoDelta (delta_t *d);
 
